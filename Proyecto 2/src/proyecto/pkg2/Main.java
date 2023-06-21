@@ -9,7 +9,7 @@ package proyecto.pkg2;
  * @author Anabella Jaua
  */
 public class Main {
-
+    
     /**
      * @param args the command line arguments
      */
