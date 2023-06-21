@@ -9,22 +9,22 @@ package BinarySearchTrees;
  * @author Anabella Jaua
  */
 public class BST {
-     private Nodo root;
+     private NodoBST root;
 
-    public BinarySearchTree() {
+    public BST() {
         this.root = null;
     }
 
-    public Nodo getRoot() {
+    public NodoBST getRoot() {
         return root;
     }
 
-    public void setRoot(Nodo root) {
+    public void setRoot(NodoBST root) {
         this.root = root;
     }
 
-    public void insertNodoRecursive(int element, Nodo raiz) {
-        Nodo node = new Nodo(element);
+    public void insertNodoRecursive(int element, NodoBST raiz) {
+        NodoBST node = new NodoBST(element);
         if (isEmpty()) {
             setRoot(node);
         } else {
@@ -44,7 +44,7 @@ public class BST {
         }
     }
 
-    public void preOrden(Nodo raiz) {
+    public void preOrden(NodoBST raiz) {
         if (raiz != null) {
             System.out.println("[ " + raiz.getElement() + " ]");
             preOrden(raiz.getLeftSon());
@@ -52,7 +52,7 @@ public class BST {
         }
     }
 
-    public void inOrden(Nodo raiz) {
+    public void inOrden(NodoBST raiz) {
         if (raiz != null) {
             preOrden(raiz.getLeftSon());
             System.out.println("[ " + raiz.getElement() + " ]");
@@ -60,7 +60,7 @@ public class BST {
         }
     }
 
-    public void postOrden(Nodo raiz) {
+    public void postOrden(NodoBST raiz) {
         if (raiz != null) {
             preOrden(raiz.getLeftSon());
             preOrden(raiz.getRightSon());
@@ -68,7 +68,7 @@ public class BST {
         }
     }
 
-    public void deleteNodo(int element, Nodo raiz, Nodo previousNode) {
+    public void deleteNodo(int element, NodoBST raiz, NodoBST previousNode) {
         if (isEmpty()) {
             System.out.println("There are not elements to delete");
         } else {
@@ -110,7 +110,7 @@ public class BST {
                     // Tiene ambos hijos
                     boolean haveRightSons = validateLeftSon(raiz.getLeftSon());
                     if (haveRightSons) {
-                        Nodo nodo = searchNodoToReplace(raiz.getLeftSon());
+                        NodoBST nodo = searchNodoToReplace(raiz.getLeftSon());
                         nodo.setLeftSon(raiz.getLeftSon());
                         nodo.setRightSon(raiz.getRightSon());
                         if (element < previousNode.getElement()) {
@@ -119,7 +119,7 @@ public class BST {
                             previousNode.setRightSon(nodo);
                         }
                     } else {
-                        Nodo nodo = raiz.getLeftSon();
+                        NodoBST nodo = raiz.getLeftSon();
                         nodo.setRightSon(raiz.getRightSon());
                         if (element < previousNode.getElement()) {
                             previousNode.setLeftSon(nodo);
@@ -136,11 +136,11 @@ public class BST {
         }
     }
     
-    public boolean validateLeftSon(Nodo raiz) {
+    public boolean validateLeftSon(NodoBST raiz) {
         return raiz.getRightSon() != null;
     }
     
-    public Nodo searchNodoToReplace(Nodo raiz){
+    public NodoBST searchNodoToReplace(NodoBST raiz){
         while(raiz.getRightSon() != null) {
             raiz = raiz.getRightSon();
         }

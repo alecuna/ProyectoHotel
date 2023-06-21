@@ -12,7 +12,7 @@ public class NodoBST {
      private int element;
     private NodoBST leftSon, rightSon;
 
-    public Nodo(int element) {
+    public NodoBST(int element) {
         this.element = element;
         this.leftSon = null;
         this.rightSon = null;
@@ -26,19 +26,19 @@ public class NodoBST {
         this.element = element;
     }
 
-    public Nodo getLeftSon() {
+    public NodoBST getLeftSon() {
         return leftSon;
     }
 
-    public void setLeftSon(Nodo leftSon) {
+    public void setLeftSon(NodoBST leftSon) {
         this.leftSon = leftSon;
     }
 
-    public Nodo getRightSon() {
+    public NodoBST getRightSon() {
         return rightSon;
     }
 
-    public void setRightSon(Nodo rightSon) {
+    public void setRightSon(NodoBST rightSon) {
         this.rightSon = rightSon;
     }
     
