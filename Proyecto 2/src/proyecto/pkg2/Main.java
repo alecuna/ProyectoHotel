@@ -22,6 +22,9 @@ public class Main {
        BasicFunctions func = new BasicFunctions();
        func.Habitaciones();
        func.Reservas();
+       func.Estado();
+       
+       
        
     }
     

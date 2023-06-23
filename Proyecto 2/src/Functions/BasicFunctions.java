@@ -93,11 +93,22 @@ public class BasicFunctions {
                     +user.getCelular());
             }
             
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
+            String cedula = "19.504.241";
+            for (Reservas user : usuarios){
+                if (user.getCi().equals(cedula)){
+                    System.out.println(user.getL_name());
+                    break; 
+                }else{
+                    System.out.println("Cliente no aparece");
+                    break;
+                }   
+            }
+
+            } catch(FileNotFoundException e) {
+                e.printStackTrace();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
         
     }
     
@@ -182,8 +193,9 @@ public class BasicFunctions {
                 String email = leerEstado.get(3);
                 String genero = leerEstado.get(4);
                 String celular = leerEstado.get(5);
+                String llegada = leerEstado.get(6);
                 
-                est.add(new Estado(num_hab, f_name, l_name, email, genero, celular, "0")); // Añade la informacion a la lista
+                est.add(new Estado(num_hab, f_name, l_name, email, genero, celular, llegada)); // Añade la informacion a la lista
             }
             
             //Guardar datos en el Test Package de Habitaciones.csv
@@ -226,7 +238,7 @@ public class BasicFunctions {
             
             leerEstado.close(); // Cierra el archivo
             
-            System.out.println("Datos de las habitaciones: ");
+            System.out.println("Estado Reservas: ");
             // Recorremos la lista y la mostramos en la pantalla
             for(Estado user : est) {
                 System.out.println(user.getNum_hab() + " , "
