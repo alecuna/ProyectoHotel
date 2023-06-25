@@ -80,14 +80,20 @@ public class Hashtable {
         }
     }
     
-    public Client searchClient(String name, String lastName){
+    public Client searchClient(String name, String lastName) {
         int clave = hashCode(name, lastName);
-        for (int i = 0; i < array[clave].getSize(); i++) {
-            if (array[clave].getDato(i).getElement().getLastName() == lastName){
-                
+        if (array[clave] != null) {
+            for (int i = 0; i < array[clave].getSize(); i++) {
+                Client currentClient = (Client) array[clave].getDato(i).getElement();
+                if (currentClient.getLastName().equals(lastName)) {
+                    System.out.println(currentClient.getLastName() + "=" + lastName);
+                    return currentClient;
+                }
             }
+        } else {
+            System.out.println("No se ha encontrado ningun cliente alojado bajo ese nombre");
         }
-
+        return null;
     }
    
 }
