@@ -56,8 +56,11 @@ public class Hashtable {
         return clave;
     }
 
-    public void insertInHashtable(int key, Client value) {
-
+    public void insertInHashtable(Client value) {
+        
+        String name = value.getName();
+        String lastName = value.getLastName();
+        int key = hashCode(name, lastName);
         Lista subLista = new Lista();
         subLista.insertFinal(value);
         Lista valorArreglo = getArray()[key];
