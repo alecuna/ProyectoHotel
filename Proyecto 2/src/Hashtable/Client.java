@@ -19,8 +19,9 @@ public class Client {
     private String tlf;
     private String llegada;
     private String salida;
+    private int roomNum;
 
-    public Client(int cedula, String name, String lastName, String email, String genero, String tipoHab, String tlf, String llegada, String salida) {
+    public Client(int cedula, String name, String lastName, String email, String genero, String tipoHab, String tlf, String llegada, String salida, int roomNum) {
         this.cedula = cedula;
         this.name = name;
         this.lastName = lastName;
@@ -30,7 +31,18 @@ public class Client {
         this.tlf = tlf;
         this.llegada = llegada;
         this.salida = salida;
+        this.roomNum = roomNum;
     }
+
+    public int getRoomNum() {
+        return roomNum;
+    }
+
+    public void setRoomNum(int roomNum) {
+        this.roomNum = roomNum;
+    }
+    
+    
 
     public int getCedula() {
         return cedula;

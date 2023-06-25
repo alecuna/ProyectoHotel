@@ -4,6 +4,8 @@
  */
 package Hashtable;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexandralecuna
@@ -124,18 +126,18 @@ public class Lista<T> {
         return node;
     }
     
-    public Nodo deleteBegin(){
-        if (!isEmpty()){
-            if (getSize() == 1) {
-                setTail(null);
-            }
-            Nodo pointer = getHead();
+    public void deleteFirst() {
+
+        if (!isEmpty()) {
+            Nodo<T> pointer = getHead();
             setHead(pointer.getNext());
             pointer.setNext(null);
             size--;
-            return pointer;
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error. Cannot delete node because the list is empty.");
+
         }
-        return null;
     }
     
     public Nodo deleteFinal(){
@@ -159,41 +161,46 @@ public class Lista<T> {
         return null;
     }
     
-    public Nodo deleteInIndex(int index) {
-        if (!isEmpty()){
-            Nodo pointer = getHead();
+    public Nodo<T> deleteInIndex(int index) {
+        if (!isEmpty()) {
+            Nodo<T> pointer = getHead();
             if (index > getSize()) {
                 System.out.println("The index is bigger than the size");
                 return deleteFinal();
-            } else {
                 
+            } else if (index == 0){
+                deleteFirst();
+                
+            } else {
                 if (index > getSize() / 2) {
                     pointer = getTail();
                     int cont = 0;
-                    while (cont < (getSize() - index -1) && pointer.getPrevious()!= null) {
+                    while (cont <= (getSize() - index - 1) && pointer.getPrevious() != getTail()) {
                         pointer = pointer.getPrevious();
                         cont++;
                     }
-                    Nodo temp = pointer.getNext();
+                    Nodo<T> temp = pointer.getNext();
                     pointer.setNext(temp.getNext());
                     temp.getNext().setPrevious(pointer);
                     temp.setNext(null);
                     temp.setPrevious(null);
                     size--;
-                    
+                    return temp;
+
                 } else {
                     pointer = getHead();
                     int cont = 0;
-                    while (cont < (index-1) && pointer.getNext()!= null) {
+                    while (cont < (index - 1) && pointer.getNext() != getHead()) {
                         pointer = pointer.getNext();
                         cont++;
                     }
-                    Nodo temp = pointer.getNext();
+                    Nodo<T> temp = pointer.getNext();
                     pointer.setNext(temp.getNext());
                     temp.getNext().setPrevious(pointer);
                     temp.setNext(null);
                     temp.setPrevious(null);
                     size--;
+                    return temp;
                 }
             }
         }
@@ -218,7 +225,8 @@ public class Lista<T> {
     public void printList(){
         for (int i = 0; i < getSize(); i++) {
             Nodo objeto = getDato(i);
-            System.out.println(i + ": "+ objeto.getElement());
+            Client currentClient = (Client) objeto.getElement();
+            System.out.println(i + ": "+ currentClient.getName());
         }
     }
     

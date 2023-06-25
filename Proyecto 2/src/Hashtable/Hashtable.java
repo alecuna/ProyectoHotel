@@ -71,29 +71,48 @@ public class Hashtable {
     public void printTable() {
         for (int i = 0; i < hashSize; i++) {
             if (array[i] != null) {
-                for (int j = 0; j < array[i].getSize(); j++) {
-                    System.out.println("key: " + i);
+                System.out.println("key: " + i);
                     array[i].printList();
-                }
             }
 
         }
     }
     
-    public Client searchClient(String name, String lastName) {
+    public void removeHospedado(String name, String lastName){
         int clave = hashCode(name, lastName);
         if (array[clave] != null) {
             for (int i = 0; i < array[clave].getSize(); i++) {
                 Client currentClient = (Client) array[clave].getDato(i).getElement();
                 if (currentClient.getLastName().equals(lastName)) {
-                    System.out.println(currentClient.getLastName() + "=" + lastName);
-                    return currentClient;
+                    if (currentClient.getRoomNum() != -1){
+                        array[clave].deleteInIndex(i);
+                    } else {
+                        System.out.println("El cliente aun no ha realizado el check-in y por lo tanto no se le ha asignado una habitacion");
+                    }
                 }
             }
         } else {
             System.out.println("No se ha encontrado ningun cliente alojado bajo ese nombre");
         }
-        return null;
+    }
+    
+    public int searchClient(String name, String lastName) {
+        int clave = hashCode(name, lastName);
+        if (array[clave] != null) {
+            for (int i = 0; i < array[clave].getSize(); i++) {
+                Client currentClient = (Client) array[clave].getDato(i).getElement();
+                if (currentClient.getLastName().equals(lastName)) {
+                    if (currentClient.getRoomNum() != -1){
+                        return currentClient.getRoomNum();
+                    } else {
+                        System.out.println("El cliente aun no ha realizado el check-in y por lo tanto no se le ha asignado una habitacion");
+                    }
+                }
+            }
+        } else {
+            System.out.println("No se ha encontrado ningun cliente alojado bajo ese nombre");
+        }
+        return -1;
     }
    
 }
