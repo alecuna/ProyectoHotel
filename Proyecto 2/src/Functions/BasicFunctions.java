@@ -4,6 +4,8 @@
  */
 package Functions;
 
+import BinarySearchTrees.NodoHistorial;
+import BinarySearchTrees.TreeHistorial;
 import BinarySearchTrees.TreeReservas;
 import Hashtable.Client;
 import Hashtable.Hashtable;
@@ -198,5 +200,23 @@ public class BasicFunctions {
             pointer = pointer.getNext();
         }
         return hash;
+    }
+    
+    public TreeHistorial crearABB (Lista<Client> historial){
+        TreeHistorial treeHistory = new TreeHistorial();
+        NodoHistorial root = new NodoHistorial(150);
+        treeHistory.setRoot(root);
+        
+        for (int i = 1; i < 301; i++) {
+            if (i!=150){
+                treeHistory.insertarNodo(root, i);
+            }
+        }
+        
+        for (int i = 0; i < historial.getSize(); i++) {
+            Client cliente = (Client) historial.getDato(i).getElement();
+            treeHistory.insertarCliente(root, cliente);
+        }
+        return treeHistory;
     }
 }

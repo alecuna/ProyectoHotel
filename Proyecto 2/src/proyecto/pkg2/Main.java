@@ -4,6 +4,7 @@
  */
 package proyecto.pkg2;
 
+import BinarySearchTrees.TreeHistorial;
 import BinarySearchTrees.TreeReservas;
 import FuncionesVarias.Funciones;
 import Functions.BasicFunctions;
@@ -46,6 +47,8 @@ public class Main {
         
        //Historial de Habitaciones 
        Lista<Client> historial = func.Historial();
+       TreeHistorial treeHistory = func.crearABB(historial);
+       treeHistory.preOrden(treeHistory.getRoot());
        
 //       funciones.checkIn(reservas.getRoot().getElement());
 //        System.out.println(reservas.getRoot().getElement().getRoomNum() + "" + reservas.getRoot().getElement().getTipoHab());
