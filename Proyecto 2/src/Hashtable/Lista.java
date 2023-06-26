@@ -221,29 +221,6 @@ public class Lista<T> {
             return pointer;
         }
     }
-   
-    public int len(){
-        return getSize();
-    }
-   
-   public int find(T data){
-        if(head.getElement() == data){
-            return 0;
-        }
-        else if(tail.getElement() == data){
-            return size-1;
-        }
-        else{
-            Nodo pointer = head;
-            for(int x = 0; x < len(); x++){
-                if(pointer.getElement() == data){
-                    return x;
-                }
-                pointer = pointer.getNext();
-            }
-        }
-        return 0;
-    }
     
     public void printList(){
         for (int i = 0; i < getSize(); i++) {

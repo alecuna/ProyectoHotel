@@ -32,7 +32,7 @@ public class TreeHistorial {
         if (isEmpty()) {
             setRoot(node);
         } else {
-            if (raiz.getElement().find(raiz)<= cliente.getRoomNum()) {
+            if (raiz.getElement()<= cliente.getRoomNum()) {
                 if(raiz.getLeftSon() == null) {
                     raiz.setLeftSon(node);
                     node.setFather(raiz);
