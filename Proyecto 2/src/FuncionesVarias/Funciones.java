@@ -22,14 +22,14 @@ public class Funciones {
     
     
     public void checkIn(Client cliente){
-//        
-//        if (reservas.checkClient(cliente)){
+        
+        if (reservas.checkClient(reservas.getRoot(), cliente)){
 //            asignarHab(cliente);
-//            reservas.deleteNodo(reservas.getRoot(), cliente);
-//            hospedados.insertInHashtable(cliente);
-//        } else {
-//            System.out.println("El cliente no posee una reservacion");
-//        }
+            reservas.deleteNodo(reservas.getRoot(), cliente);
+            hospedados.insertInHashtable(cliente);
+        } else {
+            System.out.println("El cliente no posee una reservacion");
+        }
     }
     
     public void checkOut(Client cliente){
@@ -41,6 +41,10 @@ public class Funciones {
         }
     }
     
+//    public int asignarHab(Client cliente){
+//        
+//    }
+
     public int asignarHab(Client cliente){
         return -1;
     }

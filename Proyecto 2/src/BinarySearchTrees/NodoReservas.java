@@ -7,7 +7,7 @@ import Hashtable.Client;
 
 /**
  *
- * @author Maria Daniela
+ * @author alecuna
  */
 public class NodoReservas {
     
@@ -49,6 +49,18 @@ public class NodoReservas {
 
     public void setFather(NodoReservas father) {
         this.father = father;
+    }
+    
+    public boolean isLeaf(){
+        return (leftSon == null && rightSon == null);
+    }
+    
+    public boolean hasOnlyRightSon(){
+        return (leftSon == null && rightSon != null);
+    }
+    
+    public boolean hasOnlyLeftSon(){
+        return (leftSon != null && rightSon == null);
     }
 
 }
