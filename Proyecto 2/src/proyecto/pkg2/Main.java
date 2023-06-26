@@ -37,10 +37,7 @@ public class Main {
        
        //Habitaciones
        Lista<Habitacion> rooms = func.Habitaciones();
-       String name = "Tobiah";
-       String l_name = "Sneaker";
-       int room = hash.searchClient(name, l_name);
-        System.out.println(room);
+       
        
        //Historial de Habitaciones 
        Lista<Client> historial = func.Historial();
