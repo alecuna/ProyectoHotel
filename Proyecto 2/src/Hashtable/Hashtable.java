@@ -9,7 +9,6 @@ package Hashtable;
  * @author alecuna
  */
 public class Hashtable {
-    
 
     private Lista[] array;
     private int hashSize;
@@ -57,7 +56,7 @@ public class Hashtable {
     }
 
     public void insertInHashtable(Client value) {
-        
+
         String name = value.getName();
         String lastName = value.getLastName();
         int key = hashCode(name, lastName);
@@ -75,19 +74,19 @@ public class Hashtable {
         for (int i = 0; i < hashSize; i++) {
             if (array[i] != null) {
                 System.out.println("key: " + i);
-                    array[i].printList();
+                array[i].printList();
             }
 
         }
     }
-    
-    public void removeHospedado(String name, String lastName){
+
+    public void removeHospedado(String name, String lastName) {
         int clave = hashCode(name, lastName);
         if (array[clave] != null) {
             for (int i = 0; i < array[clave].getSize(); i++) {
                 Client currentClient = (Client) array[clave].getDato(i).getElement();
                 if (currentClient.getLastName().equals(lastName)) {
-                    if (currentClient.getRoomNum() != -1){
+                    if (currentClient.getRoomNum() != -1) {
                         array[clave].deleteInIndex(i);
                     } else {
                         System.out.println("El cliente aun no ha realizado el check-in y por lo tanto no se le ha asignado una habitacion");
@@ -98,14 +97,14 @@ public class Hashtable {
             System.out.println("No se ha encontrado ningun cliente alojado bajo ese nombre");
         }
     }
-    
+
     public int searchClient(String name, String lastName) {
         int clave = hashCode(name, lastName);
         if (array[clave] != null) {
             for (int i = 0; i < array[clave].getSize(); i++) {
                 Client currentClient = (Client) array[clave].getDato(i).getElement();
                 if (currentClient.getLastName().equals(lastName)) {
-                    if (currentClient.getRoomNum() != -1){
+                    if (currentClient.getRoomNum() != -1) {
                         return currentClient.getRoomNum();
                     } else {
                         System.out.println("El cliente aun no ha realizado el check-in y por lo tanto no se le ha asignado una habitacion");
@@ -117,5 +116,19 @@ public class Hashtable {
         }
         return -1;
     }
-   
+
+    public boolean checkClient(Client cliente) {
+        boolean check = false;
+        String name = cliente.getName();
+        String lastName = cliente.getLastName();
+        int key = hashCode(name, lastName);
+        if (array[key] != null) {
+            for (int i = 0; i < array[key].getSize(); i++) {
+                if (array[key].getDato(i).getElement() == cliente) {
+                    check = true;
+                }
+
+            }
+        }return check;
+    }
 }

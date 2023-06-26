@@ -5,7 +5,7 @@
 package proyecto.pkg2;
 
 import Functions.BasicFunctions;
-import Functions.Habitaciones;
+import Functions.Habitacion;
 import Functions.Reservas;
 
 /**

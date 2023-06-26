@@ -113,11 +113,11 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Habitaciones del Archivo CSV
+     * Metodo que Guarda las Habitacion del Archivo CSV
      */
     public void Habitaciones(){
         try{
-            List<Habitaciones> hab = new ArrayList<Habitaciones>(); // Lista donde guardaremos los datos del archivo
+            List<Habitacion> hab = new ArrayList<Habitacion>(); // Lista donde guardaremos los datos del archivo
             
             CsvReader leerhabitaciones = new CsvReader("C:\\Users\\hp\\Documents\\CSV\\Booking_hotel - habitaciones.csv");
             leerhabitaciones.readHeaders();
@@ -128,10 +128,10 @@ public class BasicFunctions {
                 String tipo_hab = leerhabitaciones.get(1);
                 String piso = leerhabitaciones.get(2);
                 
-                hab.add(new Habitaciones(num_hab, tipo_hab, piso)); // Añade la informacion a la lista
+                hab.add(new Habitacion(num_hab, tipo_hab, piso)); // Añade la informacion a la lista
             }
             
-            //Guardar datos en el Test Package de Habitaciones.csv
+            //Guardar datos en el Test Package de Habitacion.csv
             
             String hab_archivo= "test\\Habitaciones.csv"; // Nombre del archivo
       
@@ -147,7 +147,7 @@ public class BasicFunctions {
                 salidaCSV.endRecord(); // Deja de escribir en el archivo
 
                 // Recorremos la lista y lo insertamos en el archivo
-                for(Habitaciones user : hab) {
+                for(Habitacion user : hab) {
                     salidaCSV.write(user.getNum_hab());
                     salidaCSV.write(user.getTipo_hab());
                     salidaCSV.write(user.getPiso());
@@ -165,7 +165,7 @@ public class BasicFunctions {
             
             System.out.println("Datos de las habitaciones: ");
             // Recorremos la lista y la mostramos en la pantalla
-            for(Habitaciones user : hab) {
+            for(Habitacion user : hab) {
                 System.out.println(user.getNum_hab() + " , "
                     + user.getTipo_hab() + " , "
                     +user.getPiso());
@@ -198,7 +198,7 @@ public class BasicFunctions {
                 est.add(new Estado(num_hab, f_name, l_name, email, genero, celular, llegada)); // Añade la informacion a la lista
             }
             
-            //Guardar datos en el Test Package de Habitaciones.csv
+            //Guardar datos en el Test Package de Habitacion.csv
             
             String est_archivo= "test\\Estado.csv"; // Nombre del archivo
       

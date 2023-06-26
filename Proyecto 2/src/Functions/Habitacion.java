@@ -8,12 +8,12 @@ package Functions;
  *
  * @author Maria Daniela
  */
-public class Habitaciones {
+public class Habitacion {
     private String num_hab; 
     private String tipo_hab; 
     private String piso; 
 
-    public Habitaciones(String num_hab, String tipo_hab, String piso) {
+    public Habitacion(String num_hab, String tipo_hab, String piso) {
         this.num_hab = num_hab;
         this.tipo_hab = tipo_hab;
         this.piso = piso;
