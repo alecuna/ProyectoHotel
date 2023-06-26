@@ -8,7 +8,7 @@ import Hashtable.Client;
 
 /**
  *
- * @author Anabella Jaua
+ * @author alecuna
  */
 public class TreeReservas {
 
@@ -55,7 +55,7 @@ public class TreeReservas {
 
     public void preOrden(NodoReservas root) {
         if (root != null) {
-            System.out.println("{ " + root.getElement() + " }");
+            System.out.println("{ " + root.getElement().getName() + " }");
             preOrden(root.getLeftSon());
             preOrden(root.getRightSon());
         }
@@ -64,7 +64,7 @@ public class TreeReservas {
     public void inOrden(NodoReservas root) {
         if (root != null) {
             preOrden(root.getLeftSon());
-            System.out.println("{ " + root.getElement() + " }");
+            System.out.println("{ " + root.getElement().getName() + " }");
             preOrden(root.getRightSon());
         }
     }
@@ -73,54 +73,87 @@ public class TreeReservas {
         if (root != null) {
             preOrden(root.getLeftSon());
             preOrden(root.getRightSon());
-            System.out.println("{ " + root.getElement() + " }");
+            System.out.println("{ " + root.getElement().getName() + " }");
         }
     }
 
-    public void deleteNodo(NodoReservas raiz, Client element) {
-        if (!isEmpty()) {
-            if (raiz == null) {
-                System.out.println("No se consiguio el nodo");
-            } else {
-                if (element.getCedula() == raiz.getElement().getCedula()) {
-                    if (raiz.getLeftSon() == null && raiz.getRightSon() == null) {
-                        // Es una Hoja
-                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-                            raiz.getFather().setLeftSon(null);
-                        } else {
-                            raiz.getFather().setRightSon(null);
-                        }
-                        raiz.setFather(null);
-                    } else if (raiz.getLeftSon() == null) {
-                        // Tiene solo hijo derecho
-                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-                            raiz.getFather().setLeftSon(raiz.getRightSon());
-                        } else {
-                            raiz.getFather().setRightSon(raiz.getRightSon());
-                        }
-                        raiz.getRightSon().setFather(raiz.getFather());
-                        raiz.setRightSon(null);
-                        raiz.setFather(null);
-                    } else if (raiz.getRightSon() == null) {
-                        // Tiene solo hijo izquierdo
-                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-                            raiz.getFather().setLeftSon(raiz.getLeftSon());
-                        } else {
-                            raiz.getFather().setRightSon(raiz.getLeftSon());
-                        }
-                        raiz.getLeftSon().setFather(raiz.getFather());
-                        raiz.setLeftSon(null);
-                        raiz.setFather(null);
-                    }
-                } else if (element.getCedula() < raiz.getElement().getCedula()) {
-                    deleteNodo(raiz.getLeftSon(), element);
-                } else {
-                    deleteNodo(raiz.getRightSon(), element);
-                }
-            }
+    public void deleteNodo(Client element, NodoReservas raiz, NodoReservas previousNode) {
+        if (isEmpty()) {
+            System.out.println("There are no elements to delete");
         } else {
-            System.out.println("No hay elementos para eliminar");
+            if (element == raiz.getElement()) {
+                if (raiz.isLeaf()) {
+                    // Cuando es una hoja
+                    if (previousNode == null) {
+                        setRoot(null);
+                    } else {
+                        if (element.getCedula() < previousNode.getElement().getCedula()) {
+                            previousNode.setLeftSon(null);
+                        } else {
+                            previousNode.setRightSon(null);
+                        }
+                    }
+                } else if (raiz.hasOnlyRightSon()) {
+                    // Cuando tiene hijo derecho
+                    if (previousNode == null) {
+                        setRoot(raiz.getRightSon());
+                    } else {
+                        if (element.getCedula() < previousNode.getElement().getCedula()) {
+                            previousNode.setLeftSon(raiz.getRightSon());
+                        } else {
+                            previousNode.setRightSon(raiz.getRightSon());
+                        }
+                    }
+                } else if (raiz.hasOnlyLeftSon()) {
+                    // Cuando tiene hijo izquierdo
+                    if (previousNode == null) {
+                        setRoot(raiz.getLeftSon());
+                    } else {
+                        if (element.getCedula() < previousNode.getElement().getCedula()) {
+                            previousNode.setLeftSon(raiz.getLeftSon());
+                        } else {
+                            previousNode.setRightSon(raiz.getLeftSon());
+                        }
+                    }
+                } else {
+                    // Tiene ambos hijos
+                    boolean haveRightSons = validateLeftSon(raiz.getLeftSon());
+                    if (haveRightSons) {
+                        NodoReservas nodo = searchNodoToReplace(raiz.getLeftSon());
+                        nodo.setLeftSon(raiz.getLeftSon());
+                        nodo.setRightSon(raiz.getRightSon());
+                        if (element.getCedula() < previousNode.getElement().getCedula()) {
+                            previousNode.setLeftSon(nodo);
+                        } else {
+                            previousNode.setRightSon(nodo);
+                        }
+                    } else {
+                        NodoReservas nodo = raiz.getLeftSon();
+                        nodo.setRightSon(raiz.getRightSon());
+                        if (element.getCedula() < previousNode.getElement().getCedula()) {
+                            previousNode.setLeftSon(nodo);
+                        } else {
+                            previousNode.setRightSon(nodo);
+                        }
+                    }
+                }
+            } else if(element.getCedula() < raiz.getElement().getCedula()) {
+                deleteNodo(element, raiz.getLeftSon(), raiz);
+            } else {
+                deleteNodo(element, raiz.getRightSon(), raiz);
+            }
         }
+    }
+    
+    public boolean validateLeftSon(NodoReservas raiz) {
+        return raiz.getRightSon() != null;
+    }
+    
+    public NodoReservas searchNodoToReplace(NodoReservas raiz){
+        while(raiz.getRightSon() != null) {
+            raiz = raiz.getRightSon();
+        }
+        return raiz;
     }
 
     public boolean checkClient(NodoReservas root, Client element) {
@@ -156,6 +189,4 @@ public class TreeReservas {
             }
         }return null;
     }
-
-
 }
