@@ -28,11 +28,11 @@ public class TreeHistorial {
     
     public void insertNodo(NodoHistorial raiz, Client cliente) {
         
-        NodoHistorial node = new NodoHistorial(raiz.getElement());
+        NodoHistorial node = new NodoHistorial(cliente.getRoomNum());
         if (isEmpty()) {
             setRoot(node);
         } else {
-            if (raiz.getElement()<= cliente.getRoomNum()) {
+            if (raiz.getRoom() <= cliente.getRoomNum()) {
                 if(raiz.getLeftSon() == null) {
                     raiz.setLeftSon(node);
                     node.setFather(raiz);
@@ -125,12 +125,11 @@ public class TreeHistorial {
     }
     
     public boolean checkClient(Client cliente){
-        
+        return true;
     }
     
-    public Client reservationDetails(int Cedula){
-        
-    }
+//    public Client reservationDetails(int Cedula){
+//    }
     
     
 }

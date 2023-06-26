@@ -8,28 +8,31 @@ package Functions;
  *
  * @author Maria Daniela
  */
-public class Habitacion {
-    private String num_hab; 
-    private String tipo_hab; 
-    private String piso; 
 
-    public Habitacion(String num_hab, String tipo_hab, String piso) {
+public class Habitacion {
+    private int num_hab; 
+    private String tipo_hab; 
+    private int piso; 
+    private boolean free; 
+
+    public Habitacion (int num_hab, String tipo_hab, int piso) {
         this.num_hab = num_hab;
         this.tipo_hab = tipo_hab;
         this.piso = piso;
+        this.free = true;
     }
 
     /**
      * @return the num_hab
      */
-    public String getNum_hab() {
+    public int getNum_hab() {
         return num_hab;
     }
 
     /**
      * @param num_hab the num_hab to set
      */
-    public void setNum_hab(String num_hab) {
+    public void setNum_hab(int num_hab) {
         this.num_hab = num_hab;
     }
 
@@ -50,14 +53,25 @@ public class Habitacion {
     /**
      * @return the piso
      */
-    public String getPiso() {
+    public int getPiso() {
         return piso;
     }
 
     /**
      * @param piso the piso to set
      */
-    public void setPiso(String piso) {
+    public void setPiso(int piso) {
         this.piso = piso;
     }
+
+    
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
+    
+    
 }

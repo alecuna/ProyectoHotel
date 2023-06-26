@@ -44,6 +44,10 @@ public class Funciones {
 //    public int asignarHab(Client cliente){
 //        
 //    }
+
+    public int asignarHab(Client cliente){
+        return -1;
+    }
     
     public void freeRoom(Client cliente){
         habitaciones.insertFinal(cliente.getRoomNum());

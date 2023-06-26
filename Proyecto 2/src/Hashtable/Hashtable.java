@@ -102,7 +102,8 @@ public class Hashtable {
         int clave = hashCode(name, lastName);
         if (array[clave] != null) {
             for (int i = 0; i < array[clave].getSize(); i++) {
-                Client currentClient = (Client) array[clave].getDato(i).getElement();
+                Client currentClient = (Client) array[clave].getDato(clave).getElement();
+                System.out.println(currentClient.getName());
                 if (currentClient.getLastName().equals(lastName)) {
                     if (currentClient.getRoomNum() != -1) {
                         return currentClient.getRoomNum();

@@ -6,7 +6,11 @@ package proyecto.pkg2;
 
 import Functions.BasicFunctions;
 import Functions.Habitacion;
-import Functions.Reservas;
+import Hashtable.Client;
+import Hashtable.Hashtable;
+import Hashtable.Lista;
+import Hashtable.Nodo;
+
 
 /**
  *
@@ -17,12 +21,29 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    public static Hashtable hash;
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+
        BasicFunctions func = new BasicFunctions();
-       func.Habitaciones();
-       func.Reservas();
-       func.Estado();
+       
+       //Reservaciones
+       Lista<Client> reservas = func.Reservas();
+    
+       //Estado Actual
+       Lista<Client> guests = func.Estado();
+       Hashtable hash = func.createHashtable(guests);
+       
+       
+       //Habitaciones
+       Lista<Habitacion> rooms = func.Habitaciones();
+       String name = "Tobiah";
+       String l_name = "Sneaker";
+       int room = hash.searchClient(name, l_name);
+        System.out.println(room);
+       
+       //Historial de Habitaciones 
+       Lista<Client> historial = func.Historial();
        
        
        
