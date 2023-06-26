@@ -28,23 +28,23 @@ public class TreeHistorial {
     
     public void insertNodo(NodoHistorial raiz, Client cliente) {
         
-        NodoHistorial node = new NodoHistorial(element);
+        NodoHistorial node = new NodoHistorial(raiz.getElement());
         if (isEmpty()) {
             setRoot(node);
         } else {
-            if (element.getCedula() <= raiz.getElement().getCedula()) {
+            if (raiz.getElement().find(raiz)<= cliente.getRoomNum()) {
                 if(raiz.getLeftSon() == null) {
                     raiz.setLeftSon(node);
                     node.setFather(raiz);
                 } else {
-                    insertNodo(raiz.getLeftSon(),element);
+                    insertNodo(raiz.getLeftSon(),cliente);
                 }
             } else {
                 if(raiz.getRightSon() == null) {
                     raiz.setRightSon(node);
                     node.setFather(raiz);
                 } else {
-                    insertNodo(raiz.getRightSon(),element);
+                    insertNodo(raiz.getRightSon(),cliente);
                 }
             }
         }
