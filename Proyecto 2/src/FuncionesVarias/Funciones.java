@@ -4,7 +4,6 @@
  */
 package FuncionesVarias;
 
-import BinarySearchTrees.BST;
 import BinarySearchTrees.TreeReservas;
 import Hashtable.Client;
 import Hashtable.Hashtable;
@@ -24,8 +23,8 @@ public class Funciones {
     
     public void checkIn(Client cliente){
         
-        if (reservas.checkClient(cliente)){
-            asignarHab(cliente);
+        if (reservas.checkClient(reservas.getRoot(), cliente)){
+//            asignarHab(cliente);
             reservas.deleteNodo(reservas.getRoot(), cliente);
             hospedados.insertInHashtable(cliente);
         } else {
@@ -42,17 +41,17 @@ public class Funciones {
         }
     }
     
-    public int asignarHab(Client cliente){
-        
-    }
+//    public int asignarHab(Client cliente){
+//        
+//    }
     
     public void freeRoom(Client cliente){
         habitaciones.insertFinal(cliente.getRoomNum());
         cliente.setRoomNum(-1);
     }
     
-    public Lista historialHab(int habitacion){
-        
-    }
+//    public Lista historialHab(int habitacion){
+//        
+//    }
     
 }
