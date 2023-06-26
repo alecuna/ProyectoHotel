@@ -5,12 +5,15 @@
 package proyecto.pkg2;
 
 import Functions.BasicFunctions;
+<<<<<<< HEAD
 import Functions.Habitaciones;
 import Hashtable.Client;
 import Hashtable.Hashtable;
 import Hashtable.Lista;
 import Hashtable.Nodo;
 import java.util.List;
+=import Functions.Habitacion;
+import Functions.Reservas;
 
 /**
  *

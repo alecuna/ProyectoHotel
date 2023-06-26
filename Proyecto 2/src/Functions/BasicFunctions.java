@@ -99,11 +99,15 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Habitaciones del Archivo CSV
+     * Metodo que Guarda las Habitacion del Archivo CSV
      */
     public Lista<Habitaciones> Habitaciones(){
         try{
+<<<<<<< HEAD
             Lista<Habitaciones> rooms = new Lista<>(); // Lista donde guardaremos los datos del archivo
+=======
+            List<Habitacion> hab = new ArrayList<Habitacion>(); // Lista donde guardaremos los datos del archivo
+>>>>>>> 3e735760837d03775c22548d827cc31c087a82fc
             
             CsvReader leerHab = new CsvReader("test\\Habitaciones.csv");
             leerHab.readHeaders();
@@ -121,6 +125,50 @@ public class BasicFunctions {
                 Habitaciones room = new Habitaciones(num_hab, tipo_hab, num_piso);
                 rooms.insertFinal(room); // Añade la informacion a la lista
                 
+<<<<<<< HEAD
+=======
+                hab.add(new Habitacion(num_hab, tipo_hab, piso)); // Añade la informacion a la lista
+            }
+            
+            //Guardar datos en el Test Package de Habitacion.csv
+            
+            String hab_archivo= "test\\Habitaciones.csv"; // Nombre del archivo
+      
+            try {
+                // Crea el archivo
+                CsvWriter salidaCSV = new CsvWriter(hab_archivo);
+
+                // Datos para identificar las columnas
+                salidaCSV.write("Num_hab");
+                salidaCSV.write("Tipo_hab");
+                salidaCSV.write("Piso");
+
+                salidaCSV.endRecord(); // Deja de escribir en el archivo
+
+                // Recorremos la lista y lo insertamos en el archivo
+                for(Habitacion user : hab) {
+                    salidaCSV.write(user.getNum_hab());
+                    salidaCSV.write(user.getTipo_hab());
+                    salidaCSV.write(user.getPiso());
+
+                    salidaCSV.endRecord(); // Deja de escribir en el archivo
+                }
+
+                salidaCSV.close(); // Cierra el archivo
+
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }    
+            
+            leerhabitaciones.close(); // Cierra el archivo
+            
+            System.out.println("Datos de las habitaciones: ");
+            // Recorremos la lista y la mostramos en la pantalla
+            for(Habitacion user : hab) {
+                System.out.println(user.getNum_hab() + " , "
+                    + user.getTipo_hab() + " , "
+                    +user.getPiso());
+>>>>>>> 3e735760837d03775c22548d827cc31c087a82fc
             }
             return rooms;
             
@@ -175,10 +223,63 @@ public class BasicFunctions {
                 
             }
             
+<<<<<<< HEAD
             } catch(FileNotFoundException e) {
                 e.printStackTrace();
             } catch(IOException e) {
                 e.printStackTrace();
+=======
+            //Guardar datos en el Test Package de Habitacion.csv
+            
+            String est_archivo= "test\\Estado.csv"; // Nombre del archivo
+      
+            try {
+                // Crea el archivo
+                CsvWriter salidaEst = new CsvWriter(est_archivo);
+
+                // Datos para identificar las columnas
+                salidaEst.write("Num_hab");
+                salidaEst.write("f_name");
+                salidaEst.write("l_name");
+                salidaEst.write("email");
+                salidaEst.write("genero");
+                salidaEst.write("celular");
+                salidaEst.write("llegada");
+
+                salidaEst.endRecord(); // Deja de escribir en el archivo
+
+                // Recorremos la lista y lo insertamos en el archivo
+                for(Estado user : est) {
+                    salidaEst.write(user.getNum_hab());
+                    salidaEst.write(user.getF_name());
+                    salidaEst.write(user.getL_name());
+                    salidaEst.write(user.getEmail());
+                    salidaEst.write(user.getGenero());
+                    salidaEst.write(user.getCelular());
+                    salidaEst.write(user.getLlegada());
+
+                    salidaEst.endRecord(); // Deja de escribir en el archivo
+                }
+
+                salidaEst.close(); // Cierra el archivo
+
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }    
+            
+            leerEstado.close(); // Cierra el archivo
+            
+            System.out.println("Estado Reservas: ");
+            // Recorremos la lista y la mostramos en la pantalla
+            for(Estado user : est) {
+                System.out.println(user.getNum_hab() + " , "
+                    + user.getF_name() + " , "
+                    + user.getL_name() + " , "
+                    + user.getEmail() + " , "
+                    + user.getGenero() + " , "
+                    + user.getCelular() + " , "
+                    + user.getLlegada());
+>>>>>>> 3e735760837d03775c22548d827cc31c087a82fc
             }
         return historial;
         
