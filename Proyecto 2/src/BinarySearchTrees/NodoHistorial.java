@@ -13,11 +13,13 @@ import Hashtable.Lista;
  */
 public class NodoHistorial {
     private Lista element;
+    private int room;
     private NodoHistorial rightSon,leftSon,father;
 
-    public NodoHistorial(Lista element) {
-        this.element = element;
+    public NodoHistorial(int room) {
+        this.element = new Lista();
         this.rightSon = this.leftSon = this.father = null;
+        this.room = room;
     }
 
     public Lista getElement() {
@@ -52,4 +54,13 @@ public class NodoHistorial {
         this.father = father;
     }
 
+    public int getRoom() {
+        return room;
+    }
+
+    public void setRoom(int room) {
+        this.room = room;
+    }
+
+    
 }

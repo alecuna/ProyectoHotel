@@ -5,15 +5,12 @@
 package proyecto.pkg2;
 
 import Functions.BasicFunctions;
-<<<<<<< HEAD
-import Functions.Habitaciones;
+import Functions.Habitacion;
 import Hashtable.Client;
 import Hashtable.Hashtable;
 import Hashtable.Lista;
 import Hashtable.Nodo;
-import java.util.List;
-=import Functions.Habitacion;
-import Functions.Reservas;
+
 
 /**
  *
@@ -39,9 +36,9 @@ public class Main {
        
        
        //Habitaciones
-       Lista<Habitaciones> rooms = func.Habitaciones();
-       String name = "Anette";
-       String l_name = "Mangeon";
+       Lista<Habitacion> rooms = func.Habitaciones();
+       String name = "Tobiah";
+       String l_name = "Sneaker";
        int room = hash.searchClient(name, l_name);
         System.out.println(room);
        

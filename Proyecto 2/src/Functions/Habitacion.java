@@ -9,21 +9,13 @@ package Functions;
  * @author Maria Daniela
  */
 
-public class Habitaciones {
+public class Habitacion {
     private int num_hab; 
     private String tipo_hab; 
     private int piso; 
     private boolean free; 
 
-    public Habitaciones(int num_hab, String tipo_hab, int piso) {
-
-public class Habitacion {
-    private String num_hab; 
-    private String tipo_hab; 
-    private String piso; 
-
-    public Habitacion(String num_hab, String tipo_hab, String piso) {
->>>>>>> 3e735760837d03775c22548d827cc31c087a82fc:Proyecto 2/src/Functions/Habitacion.java
+    public Habitacion (int num_hab, String tipo_hab, int piso) {
         this.num_hab = num_hab;
         this.tipo_hab = tipo_hab;
         this.piso = piso;
