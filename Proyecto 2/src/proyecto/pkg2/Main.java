@@ -21,6 +21,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    public static Hashtable hash;
+    
     public static void main(String[] args) {
 
        BasicFunctions func = new BasicFunctions();
@@ -31,14 +33,14 @@ public class Main {
        //Estado Actual
        Lista<Client> guests = func.Estado();
        Hashtable hash = func.createHashtable(guests);
-       hash.printTable();
+       
        
        //Habitaciones
        Lista<Habitaciones> rooms = func.Habitaciones();
-       String name = "Tobiah";
-       String l_name = "Sneaker";
-       int code = hash.searchClient(name, l_name);
-       
+       String name = "Anette";
+       String l_name = "Mangeon";
+       int room = hash.searchClient(name, l_name);
+        System.out.println(room);
        
        //Historial de Habitaciones 
        Lista<Client> historial = func.Historial();
