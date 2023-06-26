@@ -5,9 +5,12 @@
 package FuncionesVarias;
 
 import BinarySearchTrees.TreeReservas;
+import Functions.Habitacion;
 import Hashtable.Client;
 import Hashtable.Hashtable;
 import Hashtable.Lista;
+import static proyecto.pkg2.Main.rooms;
+import static proyecto.pkg2.Main.reservas;
 
 /**
  *
@@ -15,8 +18,7 @@ import Hashtable.Lista;
  */
 public class Funciones {
     
-    Lista habitaciones;
-    TreeReservas reservas;
+    
     TreeReservas historial;
     Hashtable hospedados;
     
@@ -24,8 +26,9 @@ public class Funciones {
     public void checkIn(Client cliente){
         
         if (reservas.checkClient(reservas.getRoot(), cliente)){
-//            asignarHab(cliente);
-            reservas.deleteNodo(reservas.getRoot(), cliente);
+          int hab =  asignarHab(cliente, rooms);
+          cliente.setRoomNum(hab);
+            reservas.deleteNodo(cliente, reservas.getRoot(),null);
             hospedados.insertInHashtable(cliente);
         } else {
             System.out.println("El cliente no posee una reservacion");
@@ -41,16 +44,27 @@ public class Funciones {
         }
     }
     
-//    public int asignarHab(Client cliente){
-//        
-//    }
+    public int asignarHab(Client cliente, Lista rooms){
+        String roomType = cliente.getTipoHab();
+        for (int i = 0; i < rooms.getSize(); i++) {
+            Habitacion room = (Habitacion) rooms.getDato(i).getElement();
+            if (room.isFree()){
+                if (roomType.equals(room.getTipo_hab())){
+                    room.setFree(false);
+                    return room.getNum_hab();
+                }
+                
+            }
+        }
+        return -1;
+    }
 
     public int asignarHab(Client cliente){
         return -1;
     }
     
     public void freeRoom(Client cliente){
-        habitaciones.insertFinal(cliente.getRoomNum());
+        rooms.insertFinal(cliente.getRoomNum());
         cliente.setRoomNum(-1);
     }
     

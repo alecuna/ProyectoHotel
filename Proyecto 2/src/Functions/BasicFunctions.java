@@ -4,6 +4,7 @@
  */
 package Functions;
 
+import BinarySearchTrees.TreeReservas;
 import Hashtable.Client;
 import Hashtable.Hashtable;
 import Hashtable.Lista;
@@ -24,8 +25,8 @@ public class BasicFunctions {
     /**
      * Metodo que Guarda las Reservas del Archivo CSV
      */
-    public Lista<Client> Reservas(){
-        Lista<Client> reservas = new Lista<>(); // Lista donde guardaremos los datos del archivo
+    public TreeReservas Reservas(){
+        TreeReservas reservas = new TreeReservas(); // Lista donde guardaremos los datos del archivo
         
         try{
             
@@ -34,6 +35,8 @@ public class BasicFunctions {
             
             // Mientras haya lineas obtenemos los datos del archivo
             while(leerUsuarios.readRecord()) {
+                boolean first = true;
+                
                 String ci = leerUsuarios.get(0);
                 ci = ci.replace(".","");
                 int cedula = Integer.parseInt(ci);
@@ -48,7 +51,8 @@ public class BasicFunctions {
                 String salida = leerUsuarios.get(8);
                 
                 Client cliente = new Client(cedula,f_name,l_name,email,genero,tipo_hab,celular,llegada,salida,-1);
-                reservas.insertFinal(cliente); // Añade la informacion a la lista
+                reservas.insertNodo(reservas.getRoot(), cliente);
+                
             }
             
             } catch(FileNotFoundException e) {
