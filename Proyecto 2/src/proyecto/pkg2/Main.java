@@ -34,6 +34,7 @@ public class Main {
         MainMenu menu = new MainMenu();
         menu.setVisible(true);
         menu.setLocationRelativeTo(null);
+        menu.setResizable(false);
 
 
        BasicFunctions func = new BasicFunctions();
@@ -47,16 +48,15 @@ public class Main {
        Lista<Client> guests = func.Estado();
        hash = func.createHashtable(guests);
        
-       
        //Habitaciones
        rooms = func.Habitaciones();
        rooms = func.setFreeRooms(rooms, guests);
         
        //Historial de Habitaciones 
        Lista<Client> historial = func.Historial();
-       TreeHistorial treeHistory = func.crearABB(historial);
-       treeHistory.preOrden(treeHistory.getRoot());
-       
+//       TreeHistorial treeHistory = func.crearABB(historial);
+//       treeHistory.preOrden(treeHistory.getRoot());
+//       
 //       funciones.checkIn(reservas.getRoot().getElement());
 //        System.out.println(reservas.getRoot().getElement().getRoomNum() + "" + reservas.getRoot().getElement().getTipoHab());
 

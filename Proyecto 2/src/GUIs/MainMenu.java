@@ -54,6 +54,11 @@ public class MainMenu extends javax.swing.JFrame {
         buscarReservacion.setMaximumSize(new java.awt.Dimension(134, 23));
         buscarReservacion.setMinimumSize(new java.awt.Dimension(134, 23));
         buscarReservacion.setPreferredSize(new java.awt.Dimension(134, 23));
+        buscarReservacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarReservacionActionPerformed(evt);
+            }
+        });
         getContentPane().add(buscarReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 210, 30));
 
         checkIn.setBackground(new java.awt.Color(204, 102, 0));
@@ -83,8 +88,16 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroClientesActionPerformed
-        // TODO add your handling code here:
+        registroClientes registro = new registroClientes();
+        registro.setVisible(true);
+        registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_registroClientesActionPerformed
+
+    private void buscarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarReservacionActionPerformed
+        buscarReserva buscar = new buscarReserva();
+        buscar.setVisible(true);
+        buscar.setLocationRelativeTo(null);
+    }//GEN-LAST:event_buscarReservacionActionPerformed
 
     /**
      * @param args the command line arguments
