@@ -61,6 +61,7 @@ public class buscarReserva extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Images/reservas.png"))); // NOI18N
         jLabel6.setText(" Buscar reservacion");
 
+        datos.setEditable(false);
         datos.setBackground(new java.awt.Color(255, 255, 209));
         datos.setColumns(20);
         datos.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N

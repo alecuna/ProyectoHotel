@@ -73,6 +73,11 @@ public class MainMenu extends javax.swing.JFrame {
         historialHab.setText("Historial de Habitacion");
         historialHab.setMaximumSize(new java.awt.Dimension(134, 23));
         historialHab.setPreferredSize(new java.awt.Dimension(134, 23));
+        historialHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialHabActionPerformed(evt);
+            }
+        });
         getContentPane().add(historialHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 210, 30));
 
         checkOut.setBackground(new java.awt.Color(204, 102, 0));
@@ -98,6 +103,12 @@ public class MainMenu extends javax.swing.JFrame {
         buscar.setVisible(true);
         buscar.setLocationRelativeTo(null);
     }//GEN-LAST:event_buscarReservacionActionPerformed
+
+    private void historialHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialHabActionPerformed
+        historialHabs history = new historialHabs();
+        history.setVisible(true);
+        history.setLocationRelativeTo(null);
+    }//GEN-LAST:event_historialHabActionPerformed
 
     /**
      * @param args the command line arguments

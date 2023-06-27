@@ -5,7 +5,9 @@
 package GUIs;
 
 import Hashtable.Client;
+import Hashtable.Lista;
 import javax.swing.JOptionPane;
+import static proyecto.pkg2.Main.historial;
 import static proyecto.pkg2.Main.reservas;
 
 /**
@@ -66,6 +68,7 @@ public class historialHabs extends javax.swing.JFrame {
         title.setForeground(new java.awt.Color(51, 51, 51));
         title.setText("Historial de la Habitacion N° ");
 
+        datos.setEditable(false);
         datos.setBackground(new java.awt.Color(255, 255, 209));
         datos.setColumns(20);
         datos.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
@@ -167,22 +170,37 @@ public class historialHabs extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-//        try{
-//            String habStr = hab.getText().trim();
-//            int room = Integer.parseInt(habStr);
-//            Client cliente = reservas.reservationDetails(reservas.getRoot(), ci);
-//            if (cliente != null){
-//                String info = "Nombre: "+cliente.getName()+"\nApellido: "+cliente.getLastName()+"\nCedula: "+ci+"\nEmail: "+cliente.getEmail()+"\nGenero: "+cliente.getGenero()+"\nNumero de contacto: "+cliente.getTlf()+"\nFecha de llegada: "+cliente.getLlegada()+"\nFecha de salida: "+cliente.getSalida()+"\nTipo de habitacion: "+cliente.getTipoHab();
-//                datos.setText(info);
-//                hab.setText("");
-//            } else{
-//                JOptionPane.showMessageDialog(null, "No existe ninguna reservacion con el N° de cedula "+ci);
-//                hab.setText("");
-//            }
-//        } catch (Exception e){
-//            JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar unicamente numeros y que solo/ntenemos 300 habitaciones");
-//            hab.setText("");
-//        }
+        try{
+            String habStr = hab.getText().trim();
+            int room = Integer.parseInt(habStr);
+            if(room<301 && room>0){
+            Lista history = historial.searchRoomHis(room, historial.getRoot());
+            if (history != null){
+                title.setText("Historial de la Habitacion N°"+room);
+                String info = "";
+                for (int i = 0; i < history.getSize(); i++) {
+                    Client cliente = (Client) history.getDato(i).getElement();
+                    info += "~ "+cliente.getName()+" "+cliente.getLastName()+"\n";
+                }
+                datos.setText(info);
+                hab.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ningun cliente se ha hospedado en esta habitacion");
+                hab.setText("");
+                title.setText("Historial de la Habitacion N°");
+                datos.setText("Ningun cliente se ha hospedado en esta habitacion");
+            }} else{
+                JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar unicamente numeros y que solo\ntenemos 300 habitaciones");    
+                hab.setText("");
+                title.setText("Historial de la Habitacion N°");
+                datos.setText("");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar unicamente numeros y que solo\ntenemos 300 habitaciones");
+            hab.setText("");
+            title.setText("Historial de la Habitacion N°");
+            datos.setText("");
+        }
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**

@@ -56,7 +56,6 @@ public class Main {
        //Historial de Habitaciones 
        Lista<Client> history = func.Historial();
        historial = func.crearHistorial(history);
-       historial.preOrden(historial.getRoot());
        
        
     }
