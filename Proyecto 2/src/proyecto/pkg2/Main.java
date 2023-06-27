@@ -28,6 +28,7 @@ public class Main {
     public static Hashtable hash;
     public static TreeReservas reservas;
     public static Lista rooms;
+    public static TreeHistorial historial;
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -53,13 +54,10 @@ public class Main {
        rooms = func.setFreeRooms(rooms, guests);
         
        //Historial de Habitaciones 
-       Lista<Client> historial = func.Historial();
-//       TreeHistorial treeHistory = func.crearABB(historial);
-//       treeHistory.preOrden(treeHistory.getRoot());
-//       
-//       funciones.checkIn(reservas.getRoot().getElement());
-//        System.out.println(reservas.getRoot().getElement().getRoomNum() + "" + reservas.getRoot().getElement().getTipoHab());
-
+       Lista<Client> history = func.Historial();
+       historial = func.crearHistorial(history);
+       historial.preOrden(historial.getRoot());
+       
        
     }
     

@@ -202,21 +202,21 @@ public class BasicFunctions {
         return hash;
     }
     
-    public TreeHistorial crearABB (Lista<Client> historial){
-        TreeHistorial treeHistory = new TreeHistorial();
+    public TreeHistorial crearHistorial(Lista<Client> history){
+        TreeHistorial historial = new TreeHistorial();
         NodoHistorial root = new NodoHistorial(150);
-        treeHistory.setRoot(root);
-        
-        for (int i = 1; i < 301; i++) {
+        historial.setRoot(root);
+        for (int i = 1; i <301; i++) {
             if (i!=150){
-                treeHistory.insertarNodo(root, i);
+                historial.insertNodo(i, historial.getRoot());
             }
         }
-        
-        for (int i = 0; i < historial.getSize(); i++) {
-            Client cliente = (Client) historial.getDato(i).getElement();
-            treeHistory.insertarCliente(root, cliente);
+        for (int i = 0; i < history.getSize(); i++) {
+            Client current = (Client) history.getDato(i).getElement();
+            historial.insertarCliente(historial.getRoot(), current);
         }
-        return treeHistory;
+        
+        return historial;
     }
+    
 }
