@@ -5,6 +5,7 @@
 package BinarySearchTrees;
 
 import Hashtable.Client;
+import Hashtable.Lista;
 
 /**
  *
@@ -140,6 +141,22 @@ public class TreeHistorial {
         } else {
             System.out.println("No hay elementos para eliminar");
         }
+    }
+    
+    public Lista searchRoomHis(int room, NodoHistorial raiz){
+        if (!isEmpty()) {
+            if (raiz == null) {
+                System.out.println("No se consiguio el nodo");
+            } else {
+                if (room == raiz.getRoom()) {
+                    return raiz.getElement();
+                } else if (room < raiz.getRoom()) {
+                    return searchRoomHis(room, raiz.getLeftSon());
+                } else {
+                    return searchRoomHis(room, raiz.getRightSon());
+                }
+            }
+        } return null;
     }
     
 }
