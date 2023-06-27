@@ -148,6 +148,7 @@ public class registroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void getRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getRoomActionPerformed
+        try{
         String fName = name.getText().replace(" ", "");
         String nombre = fName.substring(0, 1).toUpperCase() + fName.substring(1);
         String lName = lastName.getText().replace(" ", "");
@@ -165,6 +166,9 @@ public class registroClientes extends javax.swing.JFrame {
         }
         name.setText("");
         lastName.setText("");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar un nombre y un apellido");
+        }
     }//GEN-LAST:event_getRoomActionPerformed
 
     /**

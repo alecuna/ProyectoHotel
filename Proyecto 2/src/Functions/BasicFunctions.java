@@ -127,7 +127,6 @@ public class BasicFunctions {
                 Habitacion room = new Habitacion(num_hab, tipo_hab, num_piso);
                 rooms.insertFinal(room); // Añade la informacion a la lista
 
-                rooms.insertFinal(new Habitacion(num_hab, tipo_hab, num_piso)); // Añade la informacion a la lista
             }
             
             return rooms;
@@ -141,14 +140,20 @@ public class BasicFunctions {
     } 
     
     public Lista<Habitacion> setFreeRooms (Lista<Habitacion> rooms, Lista <Client> guests){
-        Nodo pointer = guests.getHead();
-        while (pointer.getNext()!= null){
-            Client current = (Client) pointer.getElement();
+        for (int i = 0; i < guests.getSize(); i++) {
+            Client current = (Client) guests.getDato(i).getElement();
             int num_hab = current.getRoomNum();
             Habitacion room = (Habitacion) rooms.getDato(num_hab-1).getElement();
             room.setFree(false);
-            pointer = pointer.getNext();
         }
+//        Nodo pointer = guests.getHead();
+//        while (pointer.getNext()!= null){
+//            Client current = (Client) pointer.getElement();
+//            int num_hab = current.getRoomNum();
+//            Habitacion room = (Habitacion) rooms.getDato(num_hab-1).getElement();
+//            room.setFree(false);
+//            pointer = pointer.getNext();
+//        }
         return rooms;
         
     }

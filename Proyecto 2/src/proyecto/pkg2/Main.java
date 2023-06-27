@@ -52,6 +52,7 @@ public class Main {
        //Habitaciones
        rooms = func.Habitaciones();
        rooms = func.setFreeRooms(rooms, guests);
+       
         
        //Historial de Habitaciones 
        Lista<Client> history = func.Historial();

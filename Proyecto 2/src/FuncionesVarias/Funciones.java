@@ -6,6 +6,7 @@ package FuncionesVarias;
 
 import Functions.Habitacion;
 import Hashtable.Client;
+import javax.swing.JOptionPane;
 import static proyecto.pkg2.Main.hash;
 import static proyecto.pkg2.Main.rooms;
 import static proyecto.pkg2.Main.reservas;
@@ -25,7 +26,7 @@ public class Funciones {
                 reservas.deleteNodo(cliente, reservas.getRoot(), null);
                 hash.insertInHashtable(cliente);
             } else {
-                System.out.println("El hotel no tiene habitaciones " + cliente.getTipoHab() + " disponibles.");
+                JOptionPane.showMessageDialog(null, "El hotel no tiene habitaciones " + cliente.getTipoHab() + " disponibles.");
             }
         } else {
             System.out.println("Error. El cliente no posee una reservacion en el Hotel Oasis.");
@@ -33,7 +34,7 @@ public class Funciones {
     }
 
     public void checkOut(Client cliente) {
-
+        
         if (hash.checkClient(cliente)) {
             freeRoom(cliente);
             hash.removeHospedado(cliente.getName(), cliente.getLastName());

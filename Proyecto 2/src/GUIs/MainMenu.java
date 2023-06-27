@@ -65,6 +65,11 @@ public class MainMenu extends javax.swing.JFrame {
         checkIn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         checkIn.setForeground(new java.awt.Color(255, 255, 255));
         checkIn.setText("Check-In");
+        checkIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkInActionPerformed(evt);
+            }
+        });
         getContentPane().add(checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 210, 30));
 
         historialHab.setBackground(new java.awt.Color(204, 102, 0));
@@ -109,6 +114,12 @@ public class MainMenu extends javax.swing.JFrame {
         history.setVisible(true);
         history.setLocationRelativeTo(null);
     }//GEN-LAST:event_historialHabActionPerformed
+
+    private void checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInActionPerformed
+        checkIn checkin = new checkIn();
+        checkin.setVisible(true);
+        checkin.setLocationRelativeTo(null);
+    }//GEN-LAST:event_checkInActionPerformed
 
     /**
      * @param args the command line arguments
