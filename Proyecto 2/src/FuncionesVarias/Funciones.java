@@ -4,11 +4,9 @@
  */
 package FuncionesVarias;
 
-import BinarySearchTrees.TreeReservas;
 import Functions.Habitacion;
 import Hashtable.Client;
-import Hashtable.Hashtable;
-import Hashtable.Lista;
+import static proyecto.pkg2.Main.hash;
 import static proyecto.pkg2.Main.rooms;
 import static proyecto.pkg2.Main.reservas;
 
@@ -17,59 +15,57 @@ import static proyecto.pkg2.Main.reservas;
  * @author alexandralecuna
  */
 public class Funciones {
-    
-    
-    TreeReservas historial;
-    Hashtable hospedados;
-    
-    
-    public void checkIn(Client cliente){
-        
-        if (reservas.checkClient(reservas.getRoot(), cliente)){
-          int hab =  asignarHab(cliente, rooms);
-          cliente.setRoomNum(hab);
-            reservas.deleteNodo(cliente, reservas.getRoot(),null);
-            hospedados.insertInHashtable(cliente);
+
+    public void checkIn(Client cliente) {
+
+        if (reservas.checkClient(reservas.getRoot(), cliente)) {
+            int hab = asignarHab(cliente);
+            if (hab != -1) {
+                cliente.setRoomNum(hab);
+                reservas.deleteNodo(cliente, reservas.getRoot(), null);
+                hash.insertInHashtable(cliente);
+            } else {
+                System.out.println("El hotel no tiene habitaciones " + cliente.getTipoHab() + " disponibles.");
+            }
         } else {
-            System.out.println("El cliente no posee una reservacion");
+            System.out.println("Error. El cliente no posee una reservacion en el Hotel Oasis.");
         }
     }
-    
-    public void checkOut(Client cliente){
-        
-        if (hospedados.checkClient(cliente)){
+
+    public void checkOut(Client cliente) {
+
+        if (hash.checkClient(cliente)) {
             freeRoom(cliente);
-            hospedados.removeHospedado(cliente.getName(), cliente.getLastName());
-            historial.insertNodo(historial.getRoot(), cliente);
+            hash.removeHospedado(cliente.getName(), cliente.getLastName());
+            reservas.insertNodo(reservas.getRoot(), cliente);
+        } else {
+            System.out.println("Error. El cliente no se encuentra hospedado en el Hotel Oasis.");
         }
     }
-    
-    public int asignarHab(Client cliente, Lista rooms){
+
+    public int asignarHab(Client cliente) {
         String roomType = cliente.getTipoHab();
         for (int i = 0; i < rooms.getSize(); i++) {
             Habitacion room = (Habitacion) rooms.getDato(i).getElement();
-            if (room.isFree()){
-                if (roomType.equals(room.getTipo_hab())){
+            if (room.isFree()) {
+                if (roomType.equals(room.getTipo_hab())) {
                     room.setFree(false);
                     return room.getNum_hab();
                 }
-                
             }
         }
         return -1;
     }
 
-    public int asignarHab(Client cliente){
-        return -1;
-    }
     
     public void freeRoom(Client cliente){
-        rooms.insertFinal(cliente.getRoomNum());
+        int roomNum = cliente.getRoomNum();
+        Habitacion room = (Habitacion) rooms.getDato(roomNum-1).getElement();
+        room.setFree(true);
         cliente.setRoomNum(-1);
     }
-    
+
 //    public Lista historialHab(int habitacion){
 //        
 //    }
-    
 }

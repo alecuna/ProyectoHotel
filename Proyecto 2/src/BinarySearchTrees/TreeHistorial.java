@@ -26,49 +26,22 @@ public class TreeHistorial {
         this.root = root;
     }
     
-//    public void insertNodo(NodoHistorial raiz, Client cliente) {
-//        
-//        NodoHistorial node = new NodoHistorial(cliente.getRoomNum());
-//        if (isEmpty()) {
-//            setRoot(node);
-//        } else {
-//            if (raiz.getRoom() <= cliente.getRoomNum()) {
-//                if(raiz.getLeftSon() == null) {
-//                    raiz.setLeftSon(node);
-//                    node.setFather(raiz);
-//                } else {
-//                    insertNodo(raiz.getLeftSon(),cliente);
-//                }
-//            } else {
-//                if(raiz.getRightSon() == null) {
-//                    raiz.setRightSon(node);
-//                    node.setFather(raiz);
-//                } else {
-//                    insertNodo(raiz.getRightSon(),cliente);
-//                }
-//            }
-//        }
-//    }
-    
-    public void insertarNodo(NodoHistorial raiz, int room) {
-        
+   public void insertNodo(int room, NodoHistorial raiz) {
         NodoHistorial node = new NodoHistorial(room);
         if (isEmpty()) {
             setRoot(node);
         } else {
-            if (raiz.getRoom() <= room) {
-                if(raiz.getLeftSon() == null) {
+            if (room < raiz.getRoom()) {
+                if (raiz.getLeftSon() == null) {
                     raiz.setLeftSon(node);
-                    node.setFather(raiz);
                 } else {
-                    insertarNodo(raiz.getLeftSon(),room);
+                    insertNodo(room, raiz.getLeftSon());
                 }
             } else {
-                if(raiz.getRightSon() == null) {
+                if (raiz.getRightSon() == null) {
                     raiz.setRightSon(node);
-                    node.setFather(raiz);
                 } else {
-                    insertarNodo(raiz.getRightSon(),room);
+                    insertNodo(room, raiz.getRightSon());
                 }
             }
         }
@@ -76,16 +49,19 @@ public class TreeHistorial {
     
     public void insertarCliente(NodoHistorial raiz, Client cliente) {
         
-            if (root != null) {
-                if (root.getRoom() == cliente.getRoomNum()){
-                    root.getElement().insertFinal(cliente);
-                } else if (root.getRoom() > cliente.getRoomNum()){
-                    insertarCliente(root.getRightSon(), cliente);
-                } else{
-                    insertarCliente(root.getLeftSon(),cliente);
+        if (!isEmpty()) {
+            if (raiz == null) {
+                System.out.println("No se consiguio el nodo");
+            } else {
+                if (cliente.getRoomNum() == raiz.getRoom()) {
+                    raiz.getElement().insertFinal(cliente);
+                } else if (cliente.getRoomNum() < raiz.getRoom()) {
+                    insertarCliente(raiz.getLeftSon(), cliente);
+                } else {
+                    insertarCliente(raiz.getRightSon(), cliente);
                 }
+            }
         }
-        
     }
     
     public boolean isEmpty() {
@@ -94,7 +70,11 @@ public class TreeHistorial {
     
     public void preOrden(NodoHistorial root) {
         if (root != null) {
-            System.out.println("{ "+root.getElement()+" }");
+            System.out.println(root.getRoom() + ": ");
+            for (int i = 0; i < root.getElement().getSize(); i++) {
+                Client currentClient = (Client) root.getElement().getDato(i).getElement();
+                System.out.println("--> " + currentClient.getLastName());
+            }
             preOrden(root.getLeftSon());
             preOrden(root.getRightSon());
         }
@@ -116,58 +96,50 @@ public class TreeHistorial {
         }
     }
     
-//    public void deleteNodo(NodoHistorial raiz, Client element) {
-//        if (!isEmpty()) {
-//            if (raiz == null) {
-//                System.out.println("No se consiguio el nodo");
-//            } else {
-//                if (element.getCedula() == raiz.getElement().getCedula()) {
-//                    if (raiz.getLeftSon() == null && raiz.getRightSon() == null) {
-//                        // Es una Hoja
-//                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-//                            raiz.getFather().setLeftSon(null);
-//                        } else {
-//                            raiz.getFather().setRightSon(null);
-//                        }
-//                        raiz.setFather(null);
-//                    } else if(raiz.getLeftSon() == null) {
-//                        // Tiene solo hijo derecho
-//                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-//                            raiz.getFather().setLeftSon(raiz.getRightSon());
-//                        } else {
-//                            raiz.getFather().setRightSon(raiz.getRightSon());
-//                        }
-//                        raiz.getRightSon().setFather(raiz.getFather());
-//                        raiz.setRightSon(null);
-//                        raiz.setFather(null);
-//                    } else if(raiz.getRightSon() == null) {
-//                        // Tiene solo hijo izquierdo
-//                        if (element.getCedula() < raiz.getFather().getElement().getCedula()) {
-//                            raiz.getFather().setLeftSon(raiz.getLeftSon());
-//                        } else {
-//                            raiz.getFather().setRightSon(raiz.getLeftSon());
-//                        }
-//                        raiz.getLeftSon().setFather(raiz.getFather());
-//                        raiz.setLeftSon(null);
-//                        raiz.setFather(null);
-//                    }
-//                } else if(element.getCedula() < raiz.getElement().getCedula()){
-//                    deleteNodo(raiz.getLeftSon(), element);
-//                } else {
-//                    deleteNodo(raiz.getRightSon(), element);
-//                }
-//            }
-//        } else {
-//            System.out.println("No hay elementos para eliminar");
-//        }
-//    }
-    
-//    public boolean checkClient(Client cliente){
-//        
-//    }
-    
-//    public Client reservationDetails(int Cedula){
-//    }
-    
+    public void deleteNodo(NodoHistorial raiz, int room) {
+        if (!isEmpty()) {
+            if (raiz == null) {
+                System.out.println("No se consiguio el nodo");
+            } else {
+                if (room == raiz.getRoom()) {
+                    if (raiz.getLeftSon() == null && raiz.getRightSon() == null) {
+                        // Es una Hoja
+                        if (room < raiz.getFather().getRoom()) {
+                            raiz.getFather().setLeftSon(null);
+                        } else {
+                            raiz.getFather().setRightSon(null);
+                        }
+                        raiz.setFather(null);
+                    } else if (raiz.getLeftSon() == null) {
+                        // Tiene solo hijo derecho
+                        if (room < raiz.getFather().getRoom()) {
+                            raiz.getFather().setLeftSon(raiz.getRightSon());
+                        } else {
+                            raiz.getFather().setRightSon(raiz.getRightSon());
+                        }
+                        raiz.getRightSon().setFather(raiz.getFather());
+                        raiz.setRightSon(null);
+                        raiz.setFather(null);
+                    } else if (raiz.getRightSon() == null) {
+                        // Tiene solo hijo izquierdo
+                        if (room < raiz.getFather().getRoom()) {
+                            raiz.getFather().setLeftSon(raiz.getLeftSon());
+                        } else {
+                            raiz.getFather().setRightSon(raiz.getLeftSon());
+                        }
+                        raiz.getLeftSon().setFather(raiz.getFather());
+                        raiz.setLeftSon(null);
+                        raiz.setFather(null);
+                    }
+                } else if (room < raiz.getRoom()) {
+                    deleteNodo(raiz.getLeftSon(), room);
+                } else {
+                    deleteNodo(raiz.getRightSon(), room);
+                }
+            }
+        } else {
+            System.out.println("No hay elementos para eliminar");
+        }
+    }
     
 }
