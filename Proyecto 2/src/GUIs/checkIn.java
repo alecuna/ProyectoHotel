@@ -79,7 +79,7 @@ public class checkIn extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
         title.setForeground(new java.awt.Color(51, 51, 51));
-        title.setText("Reservacion de ");
+        title.setText("Recibo de");
 
         ingresar.setText("Ingresar al Hotel");
         ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,17 +184,19 @@ public class checkIn extends javax.swing.JFrame {
             if (cliente != null){
                 hab = use.asignarHab(cliente);
 //                cliente.setRoomNum(hab);
-                title.setText("Reservacion de "+cliente.getName()+" "+cliente.getLastName());
+                title.setText("Recibo de "+cliente.getName()+" "+cliente.getLastName());
                 String info = "Cedula: "+ci+"\nNumero de habitacion asignado: "+hab+"\nTipo de habitacion: "+cliente.getTipoHab();
                 datos.setText(info);
                 cedula.setText("");
-               
+                Habitacion prueba = (Habitacion) rooms.getDato(hab-1).getElement();
+                prueba.setFree(true);
+                System.out.println(" "+prueba.isFree()+" "+prueba.getNum_hab());
             } else{
                 JOptionPane.showMessageDialog(null, "No existe ninguna reservacion con el N° de cedula "+ci);
                 cedula.setText("");
             }
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "No existe ningun check-in activo, ingrese una cedula para iniciar");
+            JOptionPane.showMessageDialog(null, "No existe ningun check-in activo, ingrese una cedula para iniciar"+e);
             cedula.setText("");
         }
     }//GEN-LAST:event_aceptarActionPerformed
@@ -211,7 +213,7 @@ public class checkIn extends javax.swing.JFrame {
             Habitacion roomActual  = (Habitacion) rooms.getDato(hab-1).getElement();
             roomActual.setFree(true);
             cedula.setText("");
-            title.setText("Reservacion de ");
+            title.setText("Recibo de ");
             datos.setText(""); 
             cliente = null;
         } } else{
@@ -226,7 +228,7 @@ public class checkIn extends javax.swing.JFrame {
         use.checkIn(cliente);
         JOptionPane.showMessageDialog(null, "Bienvenido! Esperamos disfrute su estadia");
         cedula.setText("");
-        title.setText("Reservacion de ");
+        title.setText("Recibo de ");
         datos.setText("");
         cliente = null;}
         catch (Exception e){
