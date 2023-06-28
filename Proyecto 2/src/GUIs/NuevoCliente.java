@@ -216,7 +216,7 @@ public class NuevoCliente extends javax.swing.JFrame {
                 //            pw.write("Huy");
 
                 FileWriter ff = new FileWriter("test\\Reservas.csv",true);
-                ff.write("\n"+cedula+","+nombre+","+lName+","+correo+","+gen+","+hab+","+cel+"null,null");
+                ff.write("\n"+cedula+","+nombre+","+lName+","+correo+","+gen+","+hab+","+cel+",null,null");
 
                 ff.close();
 
