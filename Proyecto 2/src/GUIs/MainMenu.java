@@ -89,6 +89,11 @@ public class MainMenu extends javax.swing.JFrame {
         checkOut.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         checkOut.setForeground(new java.awt.Color(255, 255, 255));
         checkOut.setText("Check-Out");
+        checkOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutActionPerformed(evt);
+            }
+        });
         getContentPane().add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 210, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Images/OASIS (1145 × 770 px).png"))); // NOI18N
@@ -120,6 +125,12 @@ public class MainMenu extends javax.swing.JFrame {
         checkin.setVisible(true);
         checkin.setLocationRelativeTo(null);
     }//GEN-LAST:event_checkInActionPerformed
+
+    private void checkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutActionPerformed
+        checkOut checkout = new checkOut();
+        checkout.setVisible(true);
+        checkout.setLocationRelativeTo(null);
+    }//GEN-LAST:event_checkOutActionPerformed
 
     /**
      * @param args the command line arguments

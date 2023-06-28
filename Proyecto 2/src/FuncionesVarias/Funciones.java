@@ -8,6 +8,7 @@ import Functions.Habitacion;
 import Hashtable.Client;
 import javax.swing.JOptionPane;
 import static proyecto.pkg2.Main.hash;
+import static proyecto.pkg2.Main.historial;
 import static proyecto.pkg2.Main.rooms;
 import static proyecto.pkg2.Main.reservas;
 
@@ -36,11 +37,14 @@ public class Funciones {
     public void checkOut(Client cliente) {
         
         if (hash.checkClient(cliente)) {
-            freeRoom(cliente);
+//            freeRoom(cliente);
             hash.removeHospedado(cliente.getName(), cliente.getLastName());
-            reservas.insertNodo(reservas.getRoot(), cliente);
+//            reservas.insertNodo(reservas.getRoot(), cliente);
+            historial.insertarCliente(historial.getRoot(), cliente);
+            freeRoom(cliente);
+
         } else {
-            System.out.println("Error. El cliente no se encuentra hospedado en el Hotel Oasis.");
+            JOptionPane.showMessageDialog(null, "Error. El cliente"+cliente.getName()+" "+cliente.getLastName()+" no se encuentra hospedado en el Hotel Oasis.");
         }
     }
 
@@ -66,6 +70,17 @@ public class Funciones {
         cliente.setRoomNum(-1);
     }
 
+    
+     public boolean containsNumbers (String word){
+        for (int i = 0; i < word.length(); i++) {
+        if (Character.isDigit(word.charAt(i))) {
+            return true;
+        }
+    }
+    return false;
+    }
+     
+     
 //    public Lista historialHab(int habitacion){
 //        
 //    }

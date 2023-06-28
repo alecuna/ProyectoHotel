@@ -58,6 +58,12 @@ public class registroClientes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 16)); // NOI18N
         jLabel3.setText("Ingrese el nombre y apellido de un cliente registrado para obtener su numero de habitacion");
 
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
+
         exit.setText("Salir");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +176,10 @@ public class registroClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar un nombre y un apellido");
         }
     }//GEN-LAST:event_getRoomActionPerformed
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
 
     /**
      * @param args the command line arguments

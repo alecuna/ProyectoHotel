@@ -131,4 +131,23 @@ public class Hashtable {
             }
         }return check;
     }
+    
+      public Client obtenerCliente(String name, String lastName) {
+        int clave = hashCode(name, lastName);
+        if (array[clave] != null) {
+            for (int i = 0; i < array[clave].getSize(); i++) {
+                Client currentClient = (Client) array[clave].getDato(i).getElement();
+                if (currentClient.getLastName().equals(lastName)) {
+                    if (currentClient.getRoomNum() != -1) {
+                        return currentClient;
+                    } else {
+                        System.out.println("El cliente aun no ha realizado el check-in y por lo tanto no se le ha asignado una habitacion");
+                    }
+                }
+            }
+        } else {
+            System.out.println("No se ha encontrado ningun cliente alojado bajo ese nombre");
+        }
+        return null;
+    }
 }
