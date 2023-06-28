@@ -31,6 +31,7 @@ public class MainMenu extends javax.swing.JFrame {
         checkIn = new javax.swing.JButton();
         historialHab = new javax.swing.JButton();
         checkOut = new javax.swing.JButton();
+        addClient = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,13 +40,13 @@ public class MainMenu extends javax.swing.JFrame {
         registroClientes.setBackground(new java.awt.Color(204, 102, 0));
         registroClientes.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         registroClientes.setForeground(new java.awt.Color(255, 255, 255));
-        registroClientes.setText("Registro de Clientes");
+        registroClientes.setText("Ver Huespedes");
         registroClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registroClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(registroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 210, 30));
+        getContentPane().add(registroClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 210, 30));
 
         buscarReservacion.setBackground(new java.awt.Color(204, 102, 0));
         buscarReservacion.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -59,7 +60,7 @@ public class MainMenu extends javax.swing.JFrame {
                 buscarReservacionActionPerformed(evt);
             }
         });
-        getContentPane().add(buscarReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 210, 30));
+        getContentPane().add(buscarReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 210, 30));
 
         checkIn.setBackground(new java.awt.Color(204, 102, 0));
         checkIn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -70,7 +71,7 @@ public class MainMenu extends javax.swing.JFrame {
                 checkInActionPerformed(evt);
             }
         });
-        getContentPane().add(checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 210, 30));
+        getContentPane().add(checkIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, 210, 30));
 
         historialHab.setBackground(new java.awt.Color(204, 102, 0));
         historialHab.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -83,7 +84,7 @@ public class MainMenu extends javax.swing.JFrame {
                 historialHabActionPerformed(evt);
             }
         });
-        getContentPane().add(historialHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 210, 30));
+        getContentPane().add(historialHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 210, 30));
 
         checkOut.setBackground(new java.awt.Color(204, 102, 0));
         checkOut.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -94,7 +95,18 @@ public class MainMenu extends javax.swing.JFrame {
                 checkOutActionPerformed(evt);
             }
         });
-        getContentPane().add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 210, 30));
+        getContentPane().add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 210, 30));
+
+        addClient.setBackground(new java.awt.Color(204, 102, 0));
+        addClient.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        addClient.setForeground(new java.awt.Color(255, 255, 255));
+        addClient.setText("Hacer Reservacion");
+        addClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addClientActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 210, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Images/OASIS (1145 × 770 px).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -132,6 +144,12 @@ public class MainMenu extends javax.swing.JFrame {
         checkout.setLocationRelativeTo(null);
     }//GEN-LAST:event_checkOutActionPerformed
 
+    private void addClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClientActionPerformed
+        hacerReserva nuevoCliente = new hacerReserva();
+        nuevoCliente.setVisible(true);
+        nuevoCliente.setLocationRelativeTo(null);
+    }//GEN-LAST:event_addClientActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -168,6 +186,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addClient;
     private javax.swing.JButton buscarReservacion;
     private javax.swing.JButton checkIn;
     private javax.swing.JButton checkOut;

@@ -21,7 +21,7 @@ public class registroClientes extends javax.swing.JFrame {
     public registroClientes() {
         initComponents();
     }
-    FuncionesGUIs use = new FuncionesGUIs();
+    inputVerifier use = new inputVerifier();
 
     /**
      * This method is called from within the constructor to initialize the form.
