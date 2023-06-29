@@ -25,7 +25,7 @@ import java.util.List;
 public class BasicFunctions {
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que Guarda las Reservas del archivo CSV mediante el uso de la libreria javacsv
      */
     public TreeReservas Reservas(){
         TreeReservas reservas = new TreeReservas(); // Lista donde guardaremos los datos del archivo
@@ -67,7 +67,7 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que Guarda el estado de los huespedes en el CSV
      */
     public Lista<Client> Estado(){
         Lista<Client> guests = new Lista<>(); // Lista donde guardaremos los datos del archivo
@@ -105,7 +105,7 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Habitacion del Archivo CSV
+     * Metodo que Guarda las Habitacion del Archivo CSV mediante el uso de la libreria javacsv
      */
     public Lista<Habitacion> Habitaciones(){
         try{
@@ -140,6 +140,9 @@ public class BasicFunctions {
     } 
     
     public Lista<Habitacion> setFreeRooms (Lista<Habitacion> rooms, Lista <Client> guests){
+        /**
+        * Metodo que permite conocer las habitaciones que se desocuparon en el hotel
+        */
         for (int i = 0; i < guests.getSize(); i++) {
             Client current = (Client) guests.getDato(i).getElement();
             int num_hab = current.getRoomNum();
@@ -151,7 +154,7 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que Guarda el Historico de las personas hospedadas en el hotel del archivo CSV
      */
     public Lista<Client> Historial(){
         Lista<Client> historial = new Lista<>(); // Lista donde guardaremos los datos del archivo
