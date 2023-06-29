@@ -192,6 +192,9 @@ public class BasicFunctions {
     }
 
     public Hashtable createHashtable(Lista<Client> guests){
+        /**
+        * Metodo que crea el Hashtable
+        */
         Hashtable hash = new Hashtable(600);
         Nodo pointer = guests.getHead();
         while(pointer != null){
@@ -203,6 +206,10 @@ public class BasicFunctions {
     }
     
     public TreeHistorial crearHistorial(Lista<Client> history){
+        /**
+        * Metodo que crea el árbol de Historial de Habitaciones
+        */
+        
         TreeHistorial historial = new TreeHistorial();
         NodoHistorial root = new NodoHistorial(150);
         NodoHistorial left = new NodoHistorial(75);
