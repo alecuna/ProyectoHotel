@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 public class inputVerifier  {
     
     public boolean verifyCedula(String ci){
+        
+        /**
+        * Metodo que valida que la cédula contenga unicamente números
+        */
         try{
             if (!ci.isEmpty()){
                 ci = ci.trim();
@@ -31,6 +35,10 @@ public class inputVerifier  {
     }
     
     public boolean verifyTelf(String telf){
+        
+        /**
+        * Metodo que valida que el telefono contenga unicamente números
+        */
         try{
             if(!telf.isEmpty()){
                 telf = telf.trim();
@@ -77,6 +85,10 @@ public class inputVerifier  {
     }
     
     public boolean verifyEmail(String correo){
+        
+        /**
+        * Metodo que valida que el texto ingresado por el usuario presente la estructura de un correo
+        */
         if (!correo.isEmpty()){
             int containsAt = 0;
             for (int i = 0; i < correo.length(); i++) {
@@ -96,6 +108,11 @@ public class inputVerifier  {
     } 
     
     public boolean validarFechas (Date llegada, Date salida){
+        
+        /**
+        * Metodo que valida que las fechas sean válidas
+        */
+        
         if (llegada.after(salida)){
             JOptionPane.showMessageDialog(null, "Recuerde que su fecha de llegada debe ser antes que su fecha de salida");
             return false;
