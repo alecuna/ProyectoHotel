@@ -207,7 +207,7 @@ public class BasicFunctions {
     
     public TreeHistorial crearHistorial(Lista<Client> history){
         /**
-        * Metodo que crea el árbol de Historial de Habitaciones
+        * Metodo que crea la estructura de Árbol para el Historial de Habitaciones
         */
         
         TreeHistorial historial = new TreeHistorial();

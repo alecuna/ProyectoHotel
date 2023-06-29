@@ -19,6 +19,10 @@ import static proyecto.pkg2.Main.reservas;
 public class Funciones {
 
     public void checkIn(Client cliente) {
+        
+        /**
+        * Metodo que asigna la habitación a un cliente que se encuentra reservado
+        */
 
         if (reservas.checkClient(reservas.getRoot(), cliente)) {
             int hab = asignarHab(cliente);
@@ -37,6 +41,9 @@ public class Funciones {
 
     public void checkOut(Client cliente) {
         
+        /**
+        * Metodo que hace referencia al momento de salida del huesped del hotel, y desocupa la habitación
+        */
         if (hash.checkClient(cliente)) {
 //            freeRoom(cliente);
             hash.removeHospedado(cliente.getName(), cliente.getLastName());
@@ -50,6 +57,11 @@ public class Funciones {
     }
 
     public int asignarHab(Client cliente) {
+        
+        /**
+        * Metodo que busca las habitaciones disponibles del hotel para asignarla a los huespedes
+        */
+        
         String roomType = cliente.getTipoHab();
         for (int i = 0; i < rooms.getSize(); i++) {
             Habitacion room = (Habitacion) rooms.getDato(i).getElement();
@@ -65,6 +77,10 @@ public class Funciones {
 
     
     public void freeRoom(Client cliente){
+        /**
+        * Metodo que determina la disponibilidad de las habitaciones del hotel
+        */
+        
         int roomNum = cliente.getRoomNum();
         Habitacion room = (Habitacion) rooms.getDato(roomNum-1).getElement();
         room.setFree(true);
@@ -73,6 +89,11 @@ public class Funciones {
 
     
      public boolean containsNumbers (String word){
+         
+        /**
+        * Metodo que valida que un texto contenga unicamente Strings y no números
+        */
+         
         for (int i = 0; i < word.length(); i++) {
         if (Character.isDigit(word.charAt(i))) {
             return true;
@@ -81,8 +102,4 @@ public class Funciones {
     return false;
     }
      
-     
-//    public Lista historialHab(int habitacion){
-//        
-//    }
 }
