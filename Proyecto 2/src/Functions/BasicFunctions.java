@@ -146,14 +146,6 @@ public class BasicFunctions {
             Habitacion room = (Habitacion) rooms.getDato(num_hab-1).getElement();
             room.setFree(false);
         }
-//        Nodo pointer = guests.getHead();
-//        while (pointer.getNext()!= null){
-//            Client current = (Client) pointer.getElement();
-//            int num_hab = current.getRoomNum();
-//            Habitacion room = (Habitacion) rooms.getDato(num_hab-1).getElement();
-//            room.setFree(false);
-//            pointer = pointer.getNext();
-//        }
         return rooms;
         
     }
@@ -199,7 +191,7 @@ public class BasicFunctions {
     public Hashtable createHashtable(Lista<Client> guests){
         Hashtable hash = new Hashtable(600);
         Nodo pointer = guests.getHead();
-        while(pointer.getNext() != null){
+        while(pointer != null){
             Client current = (Client) pointer.getElement();
             hash.insertInHashtable(current);
             pointer = pointer.getNext();
@@ -210,9 +202,13 @@ public class BasicFunctions {
     public TreeHistorial crearHistorial(Lista<Client> history){
         TreeHistorial historial = new TreeHistorial();
         NodoHistorial root = new NodoHistorial(150);
+        NodoHistorial left = new NodoHistorial(75);
+        NodoHistorial right = new NodoHistorial(225);
         historial.setRoot(root);
+        root.setLeftSon(left);
+        root.setRightSon(right);
         for (int i = 1; i <301; i++) {
-            if (i!=150){
+            if (i!=150 && i!= 75 && i!=225 ){
                 historial.insertNodo(i, historial.getRoot());
             }
         }

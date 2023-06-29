@@ -9,7 +9,6 @@ package GUIs;
  * @author Anabella Jaua
  */
 
-import FuncionesVarias.FuncionesGUIs;
 import javax.swing.JOptionPane;
 import static proyecto.pkg2.Main.hash; 
         

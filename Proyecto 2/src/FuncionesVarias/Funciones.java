@@ -26,6 +26,7 @@ public class Funciones {
                 cliente.setRoomNum(hab);
                 reservas.deleteNodo(cliente, reservas.getRoot(), null);
                 hash.insertInHashtable(cliente);
+                hash.printTable();
             } else {
                 JOptionPane.showMessageDialog(null, "El hotel no tiene habitaciones " + cliente.getTipoHab() + " disponibles.");
             }

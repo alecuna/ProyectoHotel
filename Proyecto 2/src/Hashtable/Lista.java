@@ -171,6 +171,9 @@ public class Lista<T> {
             } else if (index == 0){
                 deleteFirst();
                 
+            } else if (index +1 == getSize()){
+                deleteFinal();
+                
             } else {
                 if (index > getSize() / 2) {
                     pointer = getTail();

@@ -4,6 +4,7 @@
  */
 package GUIs;
 
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +15,7 @@ public class inputVerifier  {
     
     public boolean verifyCedula(String ci){
         try{
-            if (ci.isEmpty()){
+            if (!ci.isEmpty()){
                 ci = ci.trim();
                 ci = ci.replace(".", "");
                 Integer.valueOf(ci);
@@ -93,6 +94,21 @@ public class inputVerifier  {
             return false;
         }
     } 
+    
+    public boolean validarFechas (Date llegada, Date salida){
+        if (llegada.after(salida)){
+            JOptionPane.showMessageDialog(null, "Recuerde que su fecha de llegada debe ser antes que su fecha de salida");
+            return false;
+        } else if(llegada.equals(salida)){
+            JOptionPane.showMessageDialog(null, "Recuerde que su fecha de llegada no puede ser igual a su fecha de salida");
+            return false;
+        } else{
+            return true;
+        }
+    }
+    
+    
+    
 }
     
 
