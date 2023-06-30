@@ -108,7 +108,8 @@ public class MainMenu extends javax.swing.JFrame {
         });
         getContentPane().add(addClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 210, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Images/OASIS (1145 × 770 px).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIs/Images/OASIS.png"))); // NOI18N
+        jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

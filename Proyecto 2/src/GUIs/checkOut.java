@@ -222,7 +222,7 @@ public class checkOut extends javax.swing.JFrame {
                 name.setText("");
                 surname.setText("");
             } catch (Exception e){
-                JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar un nombre y un apellido"+e);
+                JOptionPane.showMessageDialog(null, "ERROR - Recuerde ingresar un nombre y un apellido");
         }
           
         } else{

@@ -251,7 +251,7 @@ public class checkIn extends javax.swing.JFrame {
         datos.setText("");
         cliente = null;}
         catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Recuerde ingresar una cedula valida!"+e);
+            JOptionPane.showMessageDialog(null, "Recuerde ingresar una cedula valida!");
         }
     }//GEN-LAST:event_ingresarActionPerformed
 
