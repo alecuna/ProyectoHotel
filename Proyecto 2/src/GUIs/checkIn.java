@@ -12,8 +12,7 @@ import static proyecto.pkg2.Main.reservas;
 import static proyecto.pkg2.Main.rooms;
 
 /**
- *
- * @author Anabella Jaua
+ * Interfaz grafica (JFrame) que permite que los clientes con reservacion realicen Check-In al hotel
  */
 public class checkIn extends javax.swing.JFrame {
 
@@ -23,8 +22,12 @@ public class checkIn extends javax.swing.JFrame {
     public checkIn() {
         initComponents();
     }
+    
+    //Atributos de la clase 
     private Client cliente;
     private int hab;
+    
+    
     Funciones use = new Funciones();
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +52,8 @@ public class checkIn extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(249, 249, 182));
 
@@ -174,8 +179,12 @@ public class checkIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que muestra los datos del check-in del cliente cuando ingresa su cedula
+     * @param evt 
+     */
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
+
         try{
             String cedulaStr = cedula.getText().trim();
             cedulaStr = cedulaStr.replace(".", "");
@@ -183,14 +192,12 @@ public class checkIn extends javax.swing.JFrame {
             cliente = reservas.reservationDetails(reservas.getRoot(), ci);
             if (cliente != null){
                 hab = use.asignarHab(cliente);
-//                cliente.setRoomNum(hab);
                 title.setText("Recibo de "+cliente.getName()+" "+cliente.getLastName());
                 String info = "Cedula: "+ci+"\nNumero de habitacion asignado: "+hab+"\nTipo de habitacion: "+cliente.getTipoHab();
                 datos.setText(info);
                 cedula.setText("");
                 Habitacion prueba = (Habitacion) rooms.getDato(hab-1).getElement();
                 prueba.setFree(true);
-                System.out.println(" "+prueba.isFree()+" "+prueba.getNum_hab());
             } else{
                 JOptionPane.showMessageDialog(null, "No existe ninguna reservacion con el N° de cedula "+ci);
                 cedula.setText("");
@@ -201,10 +208,18 @@ public class checkIn extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_aceptarActionPerformed
 
+    /**
+     * Metodo que cierra la ventana al pulsar el boton "Salir"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
+    /**
+     * Metodo que elimina los datos del check-in del cliente al tocar el boton "Cancelar"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         if (cliente != null){
         int choice = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea cancelar el check-in?\nSe eliminara la habitacion asignada");
@@ -222,6 +237,10 @@ public class checkIn extends javax.swing.JFrame {
     
     }//GEN-LAST:event_cancelActionPerformed
 
+    /**
+     * Metodo que realiza el check in del cliente y lo agrega a la lista de huespedes al tocar el boton de "Ingresar al Hotel"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         try{
         cliente.setRoomNum(hab);

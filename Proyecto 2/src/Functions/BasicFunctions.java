@@ -12,32 +12,29 @@ import Hashtable.Hashtable;
 import Hashtable.Lista;
 import Hashtable.Nodo;
 import com.csvreader.CsvReader;
-import com.csvreader.CsvWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- *
- * @author Anabella Jaua
+ * Clase que define los metodos relacionados a la extraccion de datos de los distintos archivos CSV
+ * @author Maria Daniela
  */
 public class BasicFunctions {
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que guarda los datos del archivo Reservas en un ABB 
+     * @return ABB que contiene las reservaciones del hotel
      */
     public TreeReservas Reservas(){
-        TreeReservas reservas = new TreeReservas(); // Lista donde guardaremos los datos del archivo
+        TreeReservas reservas = new TreeReservas(); 
         
         try{
             
             CsvReader leerUsuarios = new CsvReader("test\\Reservas.csv");
             leerUsuarios.readHeaders();
             
-            // Mientras haya lineas obtenemos los datos del archivo
+            // Mientras haya lineas se obtienen los datos del archivo
             while(leerUsuarios.readRecord()) {
-                boolean first = true;
                 
                 String ci = leerUsuarios.get(0);
                 ci = ci.replace(".","");
@@ -62,12 +59,12 @@ public class BasicFunctions {
             } catch(IOException e) {
                 e.printStackTrace();
             }
-        return reservas;
-        
+        return reservas; 
     }
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que guarda los datos del archivo Estado en una lista de tipo Client
+     * @return lista de los clientes hospedados actualmente en el hotel
      */
     public Lista<Client> Estado(){
         Lista<Client> guests = new Lista<>(); // Lista donde guardaremos los datos del archivo
@@ -101,11 +98,11 @@ public class BasicFunctions {
                 e.printStackTrace();
             }
         return guests;
-        
     }
     
     /**
-     * Metodo que Guarda las Habitacion del Archivo CSV
+     * Metodo que guarda los datos del archivo Habitaciones en una lista de tipo Habitacion
+     * @return lista de habitaciones del hotel
      */
     public Lista<Habitacion> Habitaciones(){
         try{
@@ -139,6 +136,12 @@ public class BasicFunctions {
         return null; 
     } 
     
+    /**
+     * Metodo que permite modificar la disponibilidad de una habitacion a traves de la lista de huespedes
+     * @param rooms, lista de habitaciones del hotel
+     * @param guests, lista de huespedes del hotel
+     * @return lista de habitaciones en donde cada habitacion tiene su disponibilidad respectiva 
+     */
     public Lista<Habitacion> setFreeRooms (Lista<Habitacion> rooms, Lista <Client> guests){
         for (int i = 0; i < guests.getSize(); i++) {
             Client current = (Client) guests.getDato(i).getElement();
@@ -151,7 +154,8 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que Guarda las Reservas del Archivo CSV
+     * Metodo que guarda los datos del archivo Historial en una lista de tipo Client
+     * @return lista del historial de habitaciones del hotel 
      */
     public Lista<Client> Historial(){
         Lista<Client> historial = new Lista<>(); // Lista donde guardaremos los datos del archivo
@@ -188,6 +192,11 @@ public class BasicFunctions {
         return historial;   
     }
 
+    /**
+     * Metodo que permite crear un Hashtable a partir de la lista de huespedes del hotel
+     * @param guests, lista de huespedes actuales del hotel
+     * @return hashtable que almacena los huespedes del hotel
+     */
     public Hashtable createHashtable(Lista<Client> guests){
         Hashtable hash = new Hashtable(600);
         Nodo pointer = guests.getHead();
@@ -199,6 +208,11 @@ public class BasicFunctions {
         return hash;
     }
     
+    /**
+     * Metodo que crea un ABB de tipo historial con 300 nodos y agrega los datos existentes del historial de habitaciones
+     * @param history, lista del historial de habitaciones
+     * @return ABB que contiene el historial de habitaciones 
+     */
     public TreeHistorial crearHistorial(Lista<Client> history){
         TreeHistorial historial = new TreeHistorial();
         NodoHistorial root = new NodoHistorial(150);

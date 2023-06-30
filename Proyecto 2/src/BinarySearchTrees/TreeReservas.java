@@ -7,25 +7,42 @@ package BinarySearchTrees;
 import Hashtable.Client;
 
 /**
- *
+ * Clase que define el ABB que guarda las reservaciones del hotel
  * @author alecuna
  */
 public class TreeReservas {
 
+    //Atributos de la clase
     private NodoReservas root;
 
+    /**
+     * Constructor de la clase
+     */
     public TreeReservas() {
         this.root = null;
     }
 
+    /**
+     * Metodo que permite obtener la raiz del arbol
+     * @return raiz del arbol
+     */
     public NodoReservas getRoot() {
         return root;
     }
 
+    /**
+     * Metodo que permite modificar la raiz del arbol
+     * @param root, raiz nueva del arbol
+     */
     public void setRoot(NodoReservas root) {
         this.root = root;
     }
 
+    /**
+     * Metodo que permite almacenar un elemento dentro de un nodo y lo inserta al arbol
+     * @param raiz del arbol
+     * @param element, elemento a agregar
+     */
     public void insertNodo(NodoReservas raiz, Client element) {
         NodoReservas node = new NodoReservas(element);
         if (isEmpty()) {
@@ -49,10 +66,18 @@ public class TreeReservas {
         }
     }
 
+    /**
+     * Metodo que permite verificar si el arbol esta vacio
+     * @return valor logico de si esta vacio
+     */
     public boolean isEmpty() {
         return getRoot() == null;
     }
 
+    /**
+     * Metodo que permite imprimir el arbol siguiendo la secuenca de PreOrden (raiz-izquierda-derecha)
+     * @param root, raiz del arbol
+     */
     public void preOrden(NodoReservas root) {
         if (root != null) {
             System.out.println("{ " + root.getElement().getName() + " }");
@@ -61,6 +86,10 @@ public class TreeReservas {
         }
     }
 
+    /**
+     * Metodo que permite imprimir el arbol siguiendo la secuenca de InOrden (izquierda-raiz-derecha)
+     * @param root, raiz del arbol
+     */
     public void inOrden(NodoReservas root) {
         if (root != null) {
             preOrden(root.getLeftSon());
@@ -69,6 +98,10 @@ public class TreeReservas {
         }
     }
 
+    /**
+     * Metodo que permite imprimir el arbol siguiendo la secuenca de PostOrden (izquierda-derecha-raiz)
+     * @param root, raiz del arbol
+     */
     public void postOrden(NodoReservas root) {
         if (root != null) {
             preOrden(root.getLeftSon());
@@ -77,6 +110,12 @@ public class TreeReservas {
         }
     }
 
+    /**
+     * Metodo que permite eliminar un elemento del arbol
+     * @param element, elemento a eliminar
+     * @param raiz del arbol
+     * @param previousNode, nodo previo al actual
+     */
     public void deleteNodo(Client element, NodoReservas raiz, NodoReservas previousNode) {
         if (isEmpty()) {
             System.out.println("There are no elements to delete");
@@ -145,10 +184,20 @@ public class TreeReservas {
         }
     }
     
+    /**
+     * Metodo que permite verificar si un nodo del arbol tiene hijo izquierdo
+     * @param raiz del arbol
+     * @return valor logico de si el nodo tiene hijo izquierdo
+     */
     public boolean validateLeftSon(NodoReservas raiz) {
         return raiz.getRightSon() != null;
     }
     
+    /**
+     * Metodo que permite buscar el nodo a remplazar 
+     * @param raiz actual del arbol
+     * @return nodo a reemplazar
+     */
     public NodoReservas searchNodoToReplace(NodoReservas raiz){
         while(raiz.getRightSon() != null) {
             raiz = raiz.getRightSon();
@@ -156,6 +205,12 @@ public class TreeReservas {
         return raiz;
     }
 
+    /**
+     * Metodo que permite verificar si un elemento se encuentra almacenado en el arbol
+     * @param root, raiz del arbol
+     * @param element, elemento a buscar 
+     * @return valor logico de si el elemento se encuentra almacenado en algun nodo del arbol
+     */
     public boolean checkClient(NodoReservas root, Client element) {
         boolean found = false;
         if (!isEmpty()) {
@@ -174,6 +229,12 @@ public class TreeReservas {
         return found;
     }
 
+    /**
+     * Metodo que permite obtener un objeto de tipo Client a partir de su numero de cedula
+     * @param root, raiz del arbol
+     * @param cedula del cliente a buscar
+     * @return el cliente que tiene el numero de cedula ingresado, o null si el cliente no existe 
+     */
     public Client reservationDetails(NodoReservas root, int cedula) {
         if (!isEmpty()) {
             if (root == null) {

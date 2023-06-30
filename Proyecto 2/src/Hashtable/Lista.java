@@ -7,49 +7,87 @@ package Hashtable;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que define a una lista doblemente enlazada
  * @author alexandralecuna
+ * @param <T>, Objeto de tipo Client 
  */
 public class Lista<T> {
     
+    //Atributos de la clase
     private Nodo head;
     private Nodo tail;
     private int size;
 
+    /**
+     * Constructor de la clase
+     */
     public Lista() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Metodo que permite obtener la cola de la lista
+     * @return ultimo nodo de la lista
+     */
     public Nodo getTail() {
         return tail;
     }
 
+    /**
+     * Metodo que permite modificar la cola de la lista
+     * @param tail, nodo que sera la nueva cola de la lista
+     */
     public void setTail(Nodo tail) {
         this.tail = tail;
     }
 
+    /**
+     * Metodo que permite obtener la cabeza de la lista
+     * @return primer nodo de la lista
+     */
     public Nodo getHead() {
         return head;
     }
 
+    /**
+     * Metodo que permite modificar la cabeza de la lista
+     * @param head, nodo que sera la nueva cabeza de la lista
+     */
     public void setHead(Nodo head) {
         this.head = head;
     }
 
+    /**
+     * Metodo que permite obtener la longitud de la lista
+     * @return longitud de la lista
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * Metodo que permite modificar la longitud de la lista
+     * @param size, nueva longitud de la lista
+     */
     public void setSize(int size) {
         this.size = size;
     }
     
+    /**
+     * Metodo que permite verificar si una lista esta vacia
+     * @return valor logico de si la lista esta vacia o no
+     */
     public boolean isEmpty(){
         return head == null;
     }
     
+    /**
+     * Metodo que permite insertar un elemento al principio de la lista
+     * @param element, elemento a agregar
+     * @return nodo agregado 
+     */
     public Nodo insertBegin(T element) {
         Nodo node = new Nodo(element);
         if (isEmpty()) {
@@ -69,6 +107,11 @@ public class Lista<T> {
         return node;
     }
     
+    /**
+     * Metodo que permite insertar un nodo al final de la lista
+     * @param element, elemento a agregar
+     * @return nodo agregado 
+     */
     public Nodo insertFinal(T element){
         Nodo node = new Nodo(element);
         if (isEmpty()) {
@@ -87,6 +130,12 @@ public class Lista<T> {
         return node;
     }
     
+    /**
+     * Metodo que permite insertar un elemento en un indice especifico de la lista
+     * @param index, valor del indice en donde se quiere agregar el nodo
+     * @param element, elemento a agregar
+     * @return nodo agregado a la lista
+     */
     public Nodo insertInIndex(int index, T element) {
         Nodo node = new Nodo(element);
         if (isEmpty()) {
@@ -126,6 +175,9 @@ public class Lista<T> {
         return node;
     }
     
+    /**
+     * Metodo que permite eliminar el primer nodo de la lista
+     */
     public void deleteFirst() {
 
         if (!isEmpty()) {
@@ -140,6 +192,10 @@ public class Lista<T> {
         }
     }
     
+    /**
+     * Metodo que permite eliminar el ultimo nodo de la lista
+     * @return 
+     */
     public Nodo deleteFinal(){
         if (!isEmpty()){
             Nodo pointer = getHead();
@@ -161,6 +217,11 @@ public class Lista<T> {
         return null;
     }
     
+    /**
+     * Metodo que permite eliminar un nodo en una posicion especifica de la lista
+     * @param index, indice del nodo a eliminar
+     * @return nodo eliminado
+     */
     public Nodo<T> deleteInIndex(int index) {
         if (!isEmpty()) {
             Nodo<T> pointer = getHead();
@@ -210,6 +271,11 @@ public class Lista<T> {
         return null;
     }
     
+    /**
+     * Metodo que permite obtener el valor de un nodo en una posicion especifica de la lista
+     * @param index, indice del nodo que se quiere obtener
+     * @return nodo en el indice ingresado
+     */
    public Nodo<T> getDato(int index) {
         if (isEmpty()) {
             return null;
@@ -225,6 +291,9 @@ public class Lista<T> {
         }
     }
     
+   /**
+    * Metodo que permite imprimir todos los elementos de la lista
+    */
     public void printList(){
         for (int i = 0; i < getSize(); i++) {
             Nodo objeto = getDato(i);

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import static proyecto.pkg2.Main.reservas;
 
 /**
- *
+ * Interfaz grafica (JFrame) que permite buscar los datos de una reservacion a partir del numero de cedula ingresado
  * @author Anabella Jaua
  */
 public class buscarReserva extends javax.swing.JFrame {
@@ -159,12 +159,19 @@ public class buscarReserva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que abre el cierra la ventana al tocar el boton "Salir"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
+    /**
+     * Metodo que muestra los datos de la reservacion a partir de la cedula ingresada
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
         try{
             String cedulaStr = cedula.getText().trim();
             cedulaStr = cedulaStr.replace(".", "");

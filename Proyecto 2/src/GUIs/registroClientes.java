@@ -5,7 +5,7 @@
 package GUIs;
 
 /**
- *
+ * Interfaz grafica (JFrame) que permite ver el numero de habitacion de un huesped del hotel 
  * @author Anabella Jaua
  */
 
@@ -20,6 +20,7 @@ public class registroClientes extends javax.swing.JFrame {
     public registroClientes() {
         initComponents();
     }
+    
     inputVerifier use = new inputVerifier();
 
     /**
@@ -148,10 +149,18 @@ public class registroClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que cierra la ventana al pulsar el boton "Salir"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
+    /**
+     * Metodo que obtiene el numero de habitacion del huesped al pulsar el boton "Obtener habitacion"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void getRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getRoomActionPerformed
         try{
         String fName = name.getText().replace(" ", "");

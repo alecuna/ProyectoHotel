@@ -14,14 +14,13 @@ import Hashtable.Client;
 import Hashtable.Hashtable;
 import Hashtable.Lista;
 
-
-
 /**
+ * Clase main que inicia el programa
  *
  * @author Anabella Jaua
  */
 public class Main {
-    
+
     /**
      * @param args the command line arguments
      */
@@ -29,36 +28,32 @@ public class Main {
     public static TreeReservas reservas;
     public static Lista rooms;
     public static TreeHistorial historial;
-    
+
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        BasicFunctions func = new BasicFunctions();
+
+        // Reservaciones
+        reservas = func.Reservas();
+
+        // Estado Actual
+        Lista<Client> guests = func.Estado();
+        hash = func.createHashtable(guests);
+
+        // Habitaciones
+        rooms = func.Habitaciones();
+        rooms = func.setFreeRooms(rooms, guests);
+
+        // Historial de Habitaciones 
+        Lista<Client> history = func.Historial();
+        historial = func.crearHistorial(history);
+
+        // Se abre la ventana principal
         MainMenu menu = new MainMenu();
         menu.setVisible(true);
         menu.setLocationRelativeTo(null);
         menu.setResizable(false);
-
-
-       BasicFunctions func = new BasicFunctions();
-       Funciones funciones = new Funciones();
-       
-       //Reservaciones
-       reservas = func.Reservas();
-
-               
-       //Estado Actual
-       Lista<Client> guests = func.Estado();
-       hash = func.createHashtable(guests);
-       
-       //Habitaciones
-       rooms = func.Habitaciones();
-       rooms = func.setFreeRooms(rooms, guests);
-       
-        
-       //Historial de Habitaciones 
-       Lista<Client> history = func.Historial();
-       historial = func.crearHistorial(history);
-       
-       
-    }
     
+    }
+
 }

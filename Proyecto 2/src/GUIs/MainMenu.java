@@ -5,7 +5,7 @@
 package GUIs;
 
 /**
- *
+ * Interfaz grafica (JFrame) que muestra el menu principal del hotel
  * @author Anabella Jaua
  */
 public class MainMenu extends javax.swing.JFrame {
@@ -114,36 +114,60 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que abre el JFrame "registroClientes" al tocar el boton "Ver Huespedes"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void registroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroClientesActionPerformed
         registroClientes registro = new registroClientes();
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_registroClientesActionPerformed
 
+    /**
+     * Metodo que abre el JFrame "buscarReserva" al tocar el boton "Buscar Reservacion"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void buscarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarReservacionActionPerformed
         buscarReserva buscar = new buscarReserva();
         buscar.setVisible(true);
         buscar.setLocationRelativeTo(null);
     }//GEN-LAST:event_buscarReservacionActionPerformed
 
+    /**
+     * Metodo que abre el JFrame "historialHabs" al tocar el boton "Historial de Habitacion"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void historialHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialHabActionPerformed
         historialHabs history = new historialHabs();
         history.setVisible(true);
         history.setLocationRelativeTo(null);
     }//GEN-LAST:event_historialHabActionPerformed
 
+    /**
+     * Metodo que abre el JFrame "checkIn" al tocar el boton "Check-In"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void checkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInActionPerformed
         checkIn checkin = new checkIn();
         checkin.setVisible(true);
         checkin.setLocationRelativeTo(null);
     }//GEN-LAST:event_checkInActionPerformed
 
+    /**
+     * Metodo que abre el JFrame "checkOut" al tocar el boton "Check-Out"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void checkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutActionPerformed
         checkOut checkout = new checkOut();
         checkout.setVisible(true);
         checkout.setLocationRelativeTo(null);
     }//GEN-LAST:event_checkOutActionPerformed
 
+    /**
+     * Metodo que abre el JFrame "hacerReserva" al tocar el boton "Hacer Reservacion"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void addClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClientActionPerformed
         hacerReserva nuevoCliente = new hacerReserva();
         nuevoCliente.setVisible(true);

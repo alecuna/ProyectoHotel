@@ -11,7 +11,7 @@ import static proyecto.pkg2.Main.historial;
 import static proyecto.pkg2.Main.reservas;
 
 /**
- *
+ * Interfaz grafica (JFrame) que permite ver la lista de los clientes que se han hospedado en la habitacion ingresada
  * @author Anabella Jaua
  */
 public class historialHabs extends javax.swing.JFrame {
@@ -164,12 +164,19 @@ public class historialHabs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que cierra la ventana al pulsar el boton "Salir"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
+    /**
+     * Metodo que muestra el historial de la haitacion ingresada al tocar el icono de "Check"
+     * @param evt, evento llevado a cabo por el usuario 
+     */
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
         try{
             String habStr = hab.getText().trim();
             int room = Integer.parseInt(habStr);

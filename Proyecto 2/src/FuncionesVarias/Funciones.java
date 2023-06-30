@@ -13,11 +13,15 @@ import static proyecto.pkg2.Main.rooms;
 import static proyecto.pkg2.Main.reservas;
 
 /**
- *
- * @author alexandralecuna
+ * Clase que define las funciones de Check-In y Check-Out y los distintos metodos necesarios para la ejecucion de las mismas
+ * @author Maria Daniela
  */
 public class Funciones {
 
+    /**
+     * Metodo que permite que un cliente con reservacion ingrese al hotel 
+     * @param cliente que desea ingresar
+     */
     public void checkIn(Client cliente) {
 
         if (reservas.checkClient(reservas.getRoot(), cliente)) {
@@ -26,7 +30,6 @@ public class Funciones {
                 cliente.setRoomNum(hab);
                 reservas.deleteNodo(cliente, reservas.getRoot(), null);
                 hash.insertInHashtable(cliente);
-                hash.printTable();
             } else {
                 JOptionPane.showMessageDialog(null, "El hotel no tiene habitaciones " + cliente.getTipoHab() + " disponibles.");
             }
@@ -35,12 +38,14 @@ public class Funciones {
         }
     }
 
+    /**
+     * Metodo que permite que un huesped abandone el hotel y guarda sus datos en el historial
+     * @param cliente que desea abandonar el hotal
+     */
     public void checkOut(Client cliente) {
         
         if (hash.checkClient(cliente)) {
-//            freeRoom(cliente);
             hash.removeHospedado(cliente.getName(), cliente.getLastName());
-//            reservas.insertNodo(reservas.getRoot(), cliente);
             historial.insertarCliente(historial.getRoot(), cliente);
             freeRoom(cliente);
 
@@ -49,6 +54,11 @@ public class Funciones {
         }
     }
 
+    /**
+     * Metodo que le asigna una habitacion libre a un cliente, que corresponda con el tipo de habitacion que desea
+     * @param cliente al cual se le asignara la habitacion
+     * @return numero de habitacion asignado al cliente
+     */
     public int asignarHab(Client cliente) {
         String roomType = cliente.getTipoHab();
         for (int i = 0; i < rooms.getSize(); i++) {
@@ -62,8 +72,11 @@ public class Funciones {
         }
         return -1;
     }
-
     
+    /**
+     * Metodo que libera la habitacion de un cliente cuando el mismo abandona el hotel
+     * @param cliente cuya habitacion se liberara
+     */
     public void freeRoom(Client cliente){
         int roomNum = cliente.getRoomNum();
         Habitacion room = (Habitacion) rooms.getDato(roomNum-1).getElement();
@@ -71,7 +84,11 @@ public class Funciones {
         cliente.setRoomNum(-1);
     }
 
-    
+    /**
+     * Metodo que verifica si una palabra contiene numeros
+     * @param word, palabra a verificar
+     * @return valor logico de si la palabra contiene numeros 
+     */
      public boolean containsNumbers (String word){
         for (int i = 0; i < word.length(); i++) {
         if (Character.isDigit(word.charAt(i))) {
