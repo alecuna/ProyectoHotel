@@ -392,7 +392,6 @@ public class hacerReserva extends javax.swing.JFrame {
         }
             
         if (verify.verifyNames(name, surname) && verify.verifyEmail(email) && verify.verifyTelf(telf) && verify.verifyCedula(ci) && verify.validarFechas(fechaL, fechaS)){
-            JOptionPane.showMessageDialog(null,"EXITOOO");
             ci = ci.trim();
             ci = ci.replace(".","");
             int id = Integer.parseInt(ci);

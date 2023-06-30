@@ -115,6 +115,10 @@ public class inputVerifier  {
      * @return valor logico de si el correo electronico ingresado es valido 
      */
     public boolean verifyEmail(String correo){
+        
+        /**
+        * Metodo que valida que el texto ingresado por el usuario presente la estructura de un correo
+        */
         if (!correo.isEmpty()){
             int containsAt = 0;
             for (int i = 0; i < correo.length(); i++) {

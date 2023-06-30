@@ -22,7 +22,7 @@ import java.io.IOException;
 public class BasicFunctions {
     
     /**
-     * Metodo que guarda los datos del archivo Reservas en un ABB 
+     * Metodo que Guarda las Reservas del archivo CSV mediante el uso de la libreria javacsv
      * @return ABB que contiene las reservaciones del hotel
      */
     public TreeReservas Reservas(){
@@ -63,7 +63,7 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que guarda los datos del archivo Estado en una lista de tipo Client
+     * Metodo que Guarda el estado de los huespedes en el CSV
      * @return lista de los clientes hospedados actualmente en el hotel
      */
     public Lista<Client> Estado(){
@@ -101,7 +101,7 @@ public class BasicFunctions {
     }
     
     /**
-     * Metodo que guarda los datos del archivo Habitaciones en una lista de tipo Habitacion
+     * Metodo que Guarda las Habitacion del Archivo CSV mediante el uso de la libreria javacsv
      * @return lista de habitaciones del hotel
      */
     public Lista<Habitacion> Habitaciones(){
@@ -153,9 +153,9 @@ public class BasicFunctions {
         
     }
     
-    /**
-     * Metodo que guarda los datos del archivo Historial en una lista de tipo Client
-     * @return lista del historial de habitaciones del hotel 
+    /**  
+     * Metodo que Guarda el Historico de las personas hospedadas en el hotel del archivo CSV
+     * @return lista del historial de habitaciones del hotel
      */
     public Lista<Client> Historial(){
         Lista<Client> historial = new Lista<>(); // Lista donde guardaremos los datos del archivo
@@ -198,6 +198,9 @@ public class BasicFunctions {
      * @return hashtable que almacena los huespedes del hotel
      */
     public Hashtable createHashtable(Lista<Client> guests){
+        /**
+        * Metodo que crea el Hashtable
+        */
         Hashtable hash = new Hashtable(600);
         Nodo pointer = guests.getHead();
         while(pointer != null){
@@ -214,6 +217,10 @@ public class BasicFunctions {
      * @return ABB que contiene el historial de habitaciones 
      */
     public TreeHistorial crearHistorial(Lista<Client> history){
+        /**
+        * Metodo que crea la estructura de Árbol para el Historial de Habitaciones
+        */
+        
         TreeHistorial historial = new TreeHistorial();
         NodoHistorial root = new NodoHistorial(150);
         NodoHistorial left = new NodoHistorial(75);
